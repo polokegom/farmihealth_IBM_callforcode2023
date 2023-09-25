@@ -1,1 +1,14 @@
-<p>login works!</p>
+<div id="welcome" [ngClass]="">
+    <div class="welcome-display">
+      <div>
+        <img alt="App ID Logo" class="logo-icon" src="https://appid-management.eu-gb.bluemix.net/swagger-ui/images/app_id_icon.svg">
+        <p>
+          Welcome to the<br>
+          IBM Cloud App ID SPA SDK<br>
+          Sample App
+        </p>
+      </div>
+      <button id="login" [ngClass]='' (click)="tryclick()">Login</button>
+      <div [ngClass]="" id="error"></div>
+    </div>
+  </div>
