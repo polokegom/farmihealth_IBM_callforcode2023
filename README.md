@@ -2,5 +2,11 @@
 This is a project build to make an autonomous drone that scans a crop field for IBM call for code
 
 
-#FarmiHealth Architecture:
+
+# FarmiHealth Architecture:
 ![Alt Text](doc/imgs/farmihealth_architecture.png)
+
+
+1. Front end app.
+2. Authentication using IBM App API.
+3. Autonomous drone that scans crops.
