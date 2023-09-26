@@ -1,5 +1,5 @@
 # FarmiHealth:
-This is a project build to make an autonomous drone that scans a crop field for IBM call for code
+This is a project built to make an autonomous drone that scans and assesses the health of crop field for IBM call for code
 
 
 
