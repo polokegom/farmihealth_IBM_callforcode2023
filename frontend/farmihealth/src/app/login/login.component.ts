@@ -1,6 +1,5 @@
 import { Component, Output, EventEmitter, OnInit  } from '@angular/core';
-//@ts-ignore
-import { AppID } from 'ibmcloud-appid-js';
+import {HttpClient} from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -10,13 +9,5 @@ import { AppID } from 'ibmcloud-appid-js';
 export class LoginComponent {
 
   constructor(){}
-  appID: AppID = null;
- //
-
- public tryclick(): void {
-  alert("++++++++++++");
-  this.appID = new AppID();
-  alert("=============");
-
- }
+ 
 }
