@@ -10,3 +10,7 @@ This is a project built to make an autonomous drone that scans and assesses the 
 1. Front end app.
 2. Authentication using IBM App API.
 3. Autonomous drone that scans crops.
+4. 
+5. 
+6. 
+7. 

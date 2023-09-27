@@ -1,0 +1,38 @@
+
+.navbar-skeleton {
+
+
+    height: 70px;
+    z-index: 100;
+    display:flex;
+    background-color: aliceblues;
+    box-shadow: 0 4px 4px rgba(146, 161, 176, 0.15);
+
+}
+
+
+
+.navbar-skeleton ul li:hover {
+    
+    
+    /*
+    text-decoration: underline;
+    */
+    
+    cursor: pointer;
+    
+
+}
+
+
+
+
+
+#navbar-right-items {
+
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+    margin-top:17px;
+    margin-right:80px;
+}

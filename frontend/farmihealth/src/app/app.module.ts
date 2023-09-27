@@ -13,6 +13,7 @@ import { MenulistComponent } from './menulist/menulist.component';
 import { ScanfieldComponent } from './scanfield/scanfield.component';
 import { FinescanfieldComponent } from './finescanfield/finescanfield.component';
 import { ShowfarmstatusComponent } from './showfarmstatus/showfarmstatus.component';
+import { HomepageComponent } from './homepage/homepage.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ShowfarmstatusComponent } from './showfarmstatus/showfarmstatus.compone
     MenulistComponent,
     ScanfieldComponent,
     FinescanfieldComponent,
-    ShowfarmstatusComponent
+    ShowfarmstatusComponent,
+    HomepageComponent
   ],
   imports: [
     BrowserModule,
