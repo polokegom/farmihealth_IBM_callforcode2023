@@ -1,12 +1,14 @@
 
+nav{
+    margin-top:0px;
+    background-color: rgb(255, 255, 255);
+}
+
 .navbar-skeleton {
-
-
-    height: 70px;
+    margin: 0px;
+    padding:0px;
     z-index: 100;
-    display:flex;
-    position: relative;
-    justify-content: space-between;
+    height:98px;
     background-color: aliceblues;
     box-shadow: 0 4px 4px rgba(146, 161, 176, 0.15);
 
@@ -14,39 +16,32 @@
 
 
 
+
 .navbar-skeleton ul li:hover {
     
-    
-    /*
     text-decoration: underline;
-    */
-    
     cursor: pointer;
-    
-
+    color: rgb(97, 169, 187);
 }
 
 
 .navbar-skeleton ul li {
     
-    
-    /*
-    text-decoration: underline;
-    */
-    
-    
-    margin-right:80px;  
+    margin-right:50px;  
     cursor: pointer;
-    
-
 }
 
 
 #navbar-right-items {
 
     display: flex;
+    position: relative;
+    font-size: 18x;
+    font-weight: bold;
+    color: rgb(104, 103, 103);
     text-decoration: none;
+    justify-content:right;
     list-style-type: none;
-    margin-top:17px;
-    margin-right:80px;
+    margin-top:40px;
+    margin-right:20px;
 }
