@@ -14,6 +14,8 @@ import { ScanfieldComponent } from './scanfield/scanfield.component';
 import { FinescanfieldComponent } from './finescanfield/finescanfield.component';
 import { ShowfarmstatusComponent } from './showfarmstatus/showfarmstatus.component';
 import { HomepageComponent } from './homepage/homepage.component';
+import { AdddroneComponent } from './adddrone/adddrone.component';
+import { AddDroneComponent } from './add-drone/add-drone.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { HomepageComponent } from './homepage/homepage.component';
     ScanfieldComponent,
     FinescanfieldComponent,
     ShowfarmstatusComponent,
-    HomepageComponent
+    HomepageComponent,
+    AdddroneComponent,
+    AddDroneComponent
   ],
   imports: [
     BrowserModule,
