@@ -1,7 +1,7 @@
 #base {
     position: absolute;
     left: 50%;
-    margin-top: 50px;
+    margin-top: 40px;
     margin-bottom: 20px;
     transform: translateX(-50%);
     display: flex;
@@ -27,7 +27,7 @@
     width: 12rem;
     height: 1.7rem;
     margin: 0.9rem;
-    border-radius: 0.5rem;
+    border-radius: 0.3rem;
   }
   
   .form-login-input {
