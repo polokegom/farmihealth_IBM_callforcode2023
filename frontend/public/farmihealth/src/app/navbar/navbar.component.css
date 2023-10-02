@@ -2,15 +2,18 @@
 nav{
     margin-top:0px;
     background-color: rgb(255, 255, 255);
+
 }
 
 .navbar-skeleton {
     margin: 0px;
     padding:0px;
     z-index: 100;
-    height:98px;
+    height:55px;
     background-color: aliceblues;
-    box-shadow: 0 4px 4px rgba(146, 161, 176, 0.15);
+    border-bottom: 1px solid;
+    border-color: lightgray;
+    box-shadow: 0 10px 10px rgba(146, 161, 176, 0.15);
 
 }
 
@@ -38,7 +41,7 @@ nav{
     position: relative;
     font-size: 18x;
     font-weight: bold;
-    color: rgb(104, 103, 103);
+    color: rgb(95, 94, 94);
     text-decoration: none;
     justify-content:right;
     list-style-type: none;
