@@ -1,5 +1,6 @@
 #base {
-    position: absolute;
+  
+    position: relative;
     left: 50%;
     margin-top: 40px;
     margin-bottom: 20px;
