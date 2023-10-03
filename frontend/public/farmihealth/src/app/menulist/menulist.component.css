@@ -1,0 +1,55 @@
+horizontal {
+
+    display: flex;
+    position: relative;
+
+    justify-content: center;
+
+    list-style: none;
+    margin-top:40px;
+}
+
+.horizontal li {
+    border: 0.1rem solid #b9b9b9;
+    cursor: pointer;
+    margin-left: 20px; 
+    display: flex;
+    position: relative;   
+    width: 200px;
+    height:140px;
+    border-radius: 0.3rem;
+    
+
+}
+
+
+.horizontal li:hover {
+
+    border: 0.1rem solid #0d8de2;
+    color: #08588d;
+}
+
+.horizontal li {
+    border: 0.1rem solid #b9b9b9;
+    cursor: pointer;
+    margin-left: 20px; 
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    width: 200px;
+    height:140px;
+    border-radius: 0.3rem;
+
+}
+
+
+.horizontal li span{
+    display: flex;
+    position: relative;  
+    justify-content: first baseline; 
+    font-weight: bold;
+    margin-bottom: 5px;;
+
+
+}
