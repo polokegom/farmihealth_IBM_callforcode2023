@@ -1,0 +1,14 @@
+.btn-design {
+    background-color: #9b9b9b;
+    color: #fff;
+    border: 0.1rem solid #aaadaf;
+    font-size: 1rem;
+    font-weight: 600;
+
+    margin-top: 50px;
+    display:flex;
+    position:relative;
+    justify-content: first baseline;
+    cursor: pointer;
+  }
+  

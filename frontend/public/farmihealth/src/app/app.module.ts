@@ -16,6 +16,7 @@ import { ShowfarmstatusComponent } from './showfarmstatus/showfarmstatus.compone
 import { HomepageComponent } from './homepage/homepage.component';
 import { AdddroneComponent } from './adddrone/adddrone.component';
 import { AddDroneComponent } from './add-drone/add-drone.component';
+import { FarmMapComponent } from './farm-map/farm-map.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { AddDroneComponent } from './add-drone/add-drone.component';
     ShowfarmstatusComponent,
     HomepageComponent,
     AdddroneComponent,
-    AddDroneComponent
+    AddDroneComponent,
+    FarmMapComponent
   ],
   imports: [
     BrowserModule,
