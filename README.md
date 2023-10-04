@@ -14,3 +14,17 @@ This is a project built to make an autonomous drone that scans and assesses the 
 5. 
 6. 
 7. 
+
+
+# Requirements:
+1. Angular v16
+2. Java v11
+3. Maven
+5. Python v3
+6. Tensorflow
+7. Numpy
+8. Pip manager
+9. Kafka 
+10. Kafka Streams
+11. NoSQL Database
+
