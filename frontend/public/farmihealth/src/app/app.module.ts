@@ -17,6 +17,8 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { AdddroneComponent } from './adddrone/adddrone.component';
 import { AddDroneComponent } from './add-drone/add-drone.component';
 import { FarmMapComponent } from './farm-map/farm-map.component';
+import {GoogleMapsModule} from '@angular/google-maps';
+
 
 @NgModule({
   declarations: [
@@ -38,6 +40,7 @@ import { FarmMapComponent } from './farm-map/farm-map.component';
   ],
   imports: [
     BrowserModule,
+    GoogleMapsModule,
     AppRoutingModule
   ],
   providers: [],

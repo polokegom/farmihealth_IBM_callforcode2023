@@ -26,5 +26,10 @@ This is a project built to make an autonomous drone that scans and assesses the 
 8. Pip manager
 9. Kafka 
 10. Kafka Streams
-11. NoSQL Database
-
+11. IBM Cloudant
+12. IBM App API
+13. IBM Event Streams
+14. IBM Virtual Server
+15. Google Maps API
+16. Bash Script
+17. DJ3.js
