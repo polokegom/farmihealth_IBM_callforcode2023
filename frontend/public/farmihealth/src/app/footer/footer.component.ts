@@ -1,81 +1,67 @@
 import { Component, NgZone, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { GoogleMap } from '@angular/google-maps';
-import * as d3 from 'd3';
 
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.css']
 })
-export class FooterComponent implements OnInit{
-  @ViewChild('mapContainer') mapContainer!: ElementRef;
-  private map!: google.maps.Map;
-  private drawingManager!: google.maps.drawing.DrawingManager;
-  private isFreehandMode = false;
-  private freehandPath: google.maps.Polyline | null = null;
+export class FooterComponent implements OnInit {
+  @ViewChild('mapContainer', { static: true }) mapContainer!: ElementRef;
+  poly!: google.maps.Polyline;
+  map!: google.maps.Map;
 
+  
+  
   ngOnInit(): void {
-
-          // Load Google Maps with your API key
-          const script = document.createElement('script');
-          script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyAWliISHIJ4PnZ73U5BQ2W9GN1_YxTuWOg&callback=initMap`;
-          script.async = true;
-          script.defer = true;
-          script.onload = () => {
-            // Initialize the map
-            this.initMap();
-          };
-          document.head.appendChild(script);
-        
-  }
-
-  initMap(): void {
-    const mapOptions: google.maps.MapOptions = {
-      center: { lat: -33.9249, lng: 18.4241 },
-      zoom: 12,
+    // Load Google Maps with your API key
+    const script = document.createElement('script');
+    script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyAWliISHIJ4PnZ73U5BQ2W9GN1_YxTuWOg&callback=initMap`;
+    script.async = true;
+    script.defer = true;
+    script.onload = () => {
+      // Initialize the map
+      this.initMap();
     };
-    this.map = new google.maps.Map(this.mapContainer.nativeElement, mapOptions);
-    this.initDrawingManager();
-
-          // Load Google Maps with your API key
-          const script = document.createElement('script');
-          script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyAWliISHIJ4PnZ73U5BQ2W9GN1_YxTuWOg&callback=initMap`;
-          script.async = true;
-          script.defer = true;
-          script.onload = () => {
-            // Initialize the map
-            this.initMap();
-          };
-          document.head.appendChild(script);
-        
+    document.head.appendChild(script);
   }
 
-  initDrawingManager(): void {
-    this.drawingManager = new google.maps.drawing.DrawingManager({
-      drawingMode: null,
-      drawingControl: false,
-      drawingControlOptions: {
-        drawingModes: [google.maps.drawing.OverlayType.POLYLINE], // Use OverlayType.POLYLINE
-      },
-    });
-    this.drawingManager.setMap(this.map);
-    google.maps.event.addListener(this.drawingManager, 'overlaycomplete', (event: google.maps.drawing.OverlayCompleteEvent) => {
-      if (this.isFreehandMode && event.type === google.maps.drawing.OverlayType.POLYLINE) {
-        this.freehandPath = event.overlay as google.maps.Polyline;
-        this.toggleFreehandMode();
+   initMap(): void {
+    const myLatlng =  {lat: 44.5452, lng: -78.5389};
+  
+    const map = new google.maps.Map(
+      document.getElementById("map") as HTMLElement,
+      {
+        zoom: 9,
+        center: myLatlng,
+        mapTypeId: "terrain",
+
       }
+    );
+    
+
+    const bounds = {
+      north: 44.599,
+      south: 44.49,
+      east: -78.443,
+      west: -78.649,
+    };
+  
+    // Define a rectangle and set its editable property to true.
+    const rectangle = new google.maps.Rectangle({
+      bounds: bounds,
+      editable: true,
+      draggable: true,
+    });
+  
+    rectangle.setMap(map);
+  
+    // listen to changes
+    ["bounds_changed", "dragstart", "drag", "dragend"].forEach((eventName) => {
+      rectangle.addListener(eventName, () => {
+        console.log({ bounds: rectangle.getBounds()?.toJSON(), eventName });
+      });
     });
   }
-
-  toggleFreehandMode(): void {
-    if (!this.isFreehandMode) {
-      this.drawingManager.setDrawingMode(google.maps.drawing.OverlayType.POLYLINE);
-    } else {
-      this.drawingManager.setDrawingMode(null);
-      if (this.freehandPath) {
-        this.freehandPath.setMap(this.map);
-      }
-    }
-    this.isFreehandMode = !this.isFreehandMode;
-  }
+  
+  
 }
