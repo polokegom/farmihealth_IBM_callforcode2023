@@ -32,4 +32,4 @@ This is a project built to make an autonomous drone that scans and assesses the 
 14. IBM Virtual Server
 15. Google Maps API
 16. Bash Script
-17. DJ3.js
+17. D3.js v5
