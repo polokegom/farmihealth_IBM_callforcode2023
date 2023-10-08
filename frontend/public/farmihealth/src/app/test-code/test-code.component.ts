@@ -15,6 +15,7 @@ export class TestCodeComponent implements OnInit {
   private points: [number, number][] = [];
   private g: any;
   private dragger: any;
+  private counter: any = 0;
 
   constructor() { }
 
@@ -25,9 +26,7 @@ export class TestCodeComponent implements OnInit {
       .attr('width', 1000);
 
     this.dragger = d3.drag()
-    .on('drag', () => {
-      this.handleDrag(d3.event);
-    })
+      .on('drag', this.handleDrag)
       .on('end', () => {
         this.dragging = false;
       });
@@ -81,7 +80,7 @@ export class TestCodeComponent implements OnInit {
     const g = svg.append('g');
     g.append('polygon')
     .attr('points', this.points.map(point => point.join(',')).join(' '))
-    .style('fill', this.getRandomColor());
+    .style('fill', "lightgrey");
     for (let i = 0; i < this.points.length; i++) {
       const circle = g.selectAll('circles')
         .data([this.points[i]])
@@ -98,33 +97,32 @@ export class TestCodeComponent implements OnInit {
     }
     this.points.splice(0);
     this.drawing = false;
+    alert("Closed window")
   }
 
-  
-  handleDrag = (event: d3.D3DragEvent<SVGCircleElement, any, any>) => {
+  handleDrag = () => {
     if (this.drawing) return;
-    const dragCircle = d3.select(event.sourceEvent.target);
-    const newPoints: [number, number][] = [];
+   /* const dragCircle = d3.select(d3.event.sourceEvent.target);
+    const newPoints: any = [];
     this.dragging = true;
     const poly = d3.select(dragCircle.node().parentNode).select('polygon');
     const circles = d3.select(dragCircle.node().parentNode).selectAll('circle') as d3.Selection<SVGCircleElement, any, any, any>;
+    this.counter++;
     dragCircle
-      .attr('cx', event.x)
-      .attr('cy', event.y);
-    circles.each(function () {
-      const circle = d3.select(this);
-      newPoints.push([+circle.attr('cx'), +circle.attr('cy')]);
-    });
-    poly.attr('points', newPoints.map(point => point.join(',')).join(' '));
-  }
-  
+      .attr('cx', d3.event.x)
+      .attr('cy', d3.event.y);
+    
+    for (let i = 0; i < circles.nodes().length; i++) {
 
-  getRandomColor(): string {
-    const letters = '0123456789ABCDEF'.split('');
-    let color = '#';
-    for (let i = 0; i < 6; i++) {
-      color += letters[Math.floor(Math.random() * 16)];
+      var circle = d3.select<SVGCircleElement, unknown>(circles.nodes()[i]);
+    
+      newPoints.push([circle.attr('cx')!, circle.attr('cy')!]);
     }
-    return color;
+
+    poly.attr('points', newPoints);
+   */
   }
+
+ 
 }
+
