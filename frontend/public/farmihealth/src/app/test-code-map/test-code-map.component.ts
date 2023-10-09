@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,  AfterViewInit} from '@angular/core';
 import { Tween, update, Easing } from '@tweenjs/tween.js';
 import { delay } from 'rxjs';
 // Import Google Maps types
@@ -18,7 +18,7 @@ interface Country {
 })
 
 
-export class TestCodeMapComponent implements OnInit{
+export class TestCodeMapComponent implements OnInit, AfterViewInit{
 
   mapIsLoading: Boolean = true;
   
@@ -31,33 +31,38 @@ export class TestCodeMapComponent implements OnInit{
         script.async = true;
         script.defer = true;
         script.onload = () => {
+          const cameraOptions: google.maps.CameraOptions = {
+            tilt: 0,
+            heading: 0,
+            zoom: 18,
+            center: { lat: 35.6594945, lng: 139.6999859 },
+          };
+      
+          const mapOptions = {
+            ...cameraOptions,
+            mapId: '15431d2b469f209e',
+            fullscreenControl: false, // Disable fullscreen control
+            mapTypeControl: false, // Disable map type control
+            streetViewControl: false, // Disable street view control,
+            mapTypeId: google.maps.MapTypeId.SATELLITE,
+            minZoom: 16,
+          };
           // Initialize the map
-          this.initMap();
+          this.initMap(cameraOptions,mapOptions);
         };
         document.head.appendChild(script);
     
   }
 
  
-  initMap(): void {
-    const cameraOptions: google.maps.CameraOptions = {
-      tilt: 0,
-      heading: 0,
-      zoom: 3,
-      center: { lat: 35.6594945, lng: 139.6999859 },
-    };
-
-    const mapOptions = {
-      ...cameraOptions,
-      mapId: '15431d2b469f209e',
-    };
+  initMap(cameraOptions:any, mapOptions: any): void {
+ 
 
     const map = new google.maps.Map(
       document.getElementById('map') as HTMLElement,
       mapOptions
     );
-
-    // Install Tweenjs with npm i @tweenjs/tween.js
+/*
     new Tween(cameraOptions) // Create a new tween that modifies 'cameraOptions'.
       .to({ heading: 90, zoom: 18 },15000) // Move to destination in 15 seconds.
       .easing(Easing.Quadratic.Out) // Use an easing function to make the animation smooth.
@@ -73,9 +78,23 @@ export class TestCodeMapComponent implements OnInit{
       requestAnimationFrame(animate);
       update(time);
     }
-    requestAnimationFrame(animate);
-  }
+    requestAnimationFrame(animate); 
+    this.initMap(cameraOptions,mapOptions)
+    //map.setOptions( { minZoom: 10 })
+*/
 
+google.maps.event.addListenerOnce(map, 'tilesloaded', function() {
+  //alert("done loading")
+ 
+
+});
+  }
+  
+  ngAfterViewInit(): void {
+    
+
+  }
+/*
   animateToSatelliteMap(map: google.maps.Map): void {
 
     map.getDiv().style.transition = `opacity 1s`;
@@ -89,6 +108,6 @@ export class TestCodeMapComponent implements OnInit{
         map.getDiv().style.opacity = '1';
       }, 1000);
     }, 1000);
-  }
+  }*/
 
 }
