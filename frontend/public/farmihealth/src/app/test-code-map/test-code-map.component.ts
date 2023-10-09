@@ -140,7 +140,7 @@ export class TestCodeMapComponent implements OnInit, AfterViewInit{
     btnBack.style.marginLeft = '10px';
    // btnBack.style.padding = '0 5px';
 
-    btnBack.textContent = 'Back';
+    btnBack.textContent = 'Home';
     btnBack.title = 'Select farm area';
     btnBack.type = 'button';
 
@@ -157,7 +157,7 @@ export class TestCodeMapComponent implements OnInit, AfterViewInit{
     btnSelect.style.padding = '0 5px';
     btnSelect.style.textAlign = 'center';
 
-    btnSelect.textContent = 'Select-Drone-Area';
+    btnSelect.textContent = 'Select Drone Area';
     btnSelect.title = 'Select farm area';
     btnSelect.type = 'button';
 
@@ -173,12 +173,14 @@ export class TestCodeMapComponent implements OnInit, AfterViewInit{
     btnContinue.style.lineHeight = '38px';
     btnContinue.style.margin = '8px 0 22px';
     btnContinue.style.marginLeft = '10px';
+    btnContinue.style.marginBottom = '25px';
     btnContinue.style.padding = '0 5px';
     btnContinue.style.textAlign = 'center';
 
-    btnContinue.textContent = 'Continue';
+    btnContinue.textContent = 'CONTINUE';
     btnContinue.title = 'Select farm area';
     btnContinue.type = 'button';
+    btnContinue.disabled = true;
   
     // Setup the click event listeners: simply set the map to Chicago.
     btnSelect.addEventListener('click', () => {
@@ -200,9 +202,9 @@ export class TestCodeMapComponent implements OnInit, AfterViewInit{
     btnSelect.addEventListener('mouseenter', addHoverStyles);
     btnSelect.addEventListener('mouseleave', removeHoverStyles);
 
-    map.controls[google.maps.ControlPosition.TOP_CENTER].push(btnBack);
+    map.controls[google.maps.ControlPosition.LEFT_TOP].push(btnBack);
     map.controls[google.maps.ControlPosition.TOP_CENTER].push(btnSelect);
-    map.controls[google.maps.ControlPosition.TOP_CENTER].push(btnContinue);
+    map.controls[google.maps.ControlPosition.BOTTOM_CENTER].push(btnContinue);
 
   
     
