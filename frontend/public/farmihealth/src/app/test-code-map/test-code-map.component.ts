@@ -11,6 +11,10 @@ interface Country {
   end: string[];
 }
 
+
+
+
+
 @Component({
   selector: 'app-test-code-map',
   templateUrl: './test-code-map.component.html',
@@ -21,8 +25,18 @@ interface Country {
 export class TestCodeMapComponent implements OnInit, AfterViewInit{
 
   mapIsLoading: Boolean = true;
+  NEW_ZEALAND_BOUNDS = {
+    north: -34.36,
+    south: -47.35,
+    west: 166.28,
+    east: -175.81,
+  };
   
+  chicago = { lat: 41.85, lng: -87.65 };
+
+
   constructor() { }
+
 
   ngOnInit(): void {
         // Load Google Maps with your API key
@@ -45,7 +59,12 @@ export class TestCodeMapComponent implements OnInit, AfterViewInit{
             mapTypeControl: false, // Disable map type control
             streetViewControl: false, // Disable street view control,
             mapTypeId: google.maps.MapTypeId.SATELLITE,
-            minZoom: 16,
+            minZoom: 16,/*
+            restriction: {
+              latLngBounds: this.NEW_ZEALAND_BOUNDS,
+              strictBounds: false,
+            },
+        */
           };
           // Initialize the map
           this.initMap(cameraOptions,mapOptions);
@@ -58,42 +77,99 @@ export class TestCodeMapComponent implements OnInit, AfterViewInit{
   initMap(cameraOptions:any, mapOptions: any): void {
  
 
-    const map = new google.maps.Map(
-      document.getElementById('map') as HTMLElement,
-      mapOptions
-    );
-/*
-    new Tween(cameraOptions) // Create a new tween that modifies 'cameraOptions'.
-      .to({ heading: 90, zoom: 18 },15000) // Move to destination in 15 seconds.
-      .easing(Easing.Quadratic.Out) // Use an easing function to make the animation smooth.
-      .onUpdate(() => {
-        map.moveCamera(cameraOptions);
-      }).onComplete(()=> {
+      const map = new google.maps.Map(
+        document.getElementById('map') as HTMLElement,
+        mapOptions
+      );
 
-        map.setMapTypeId(google.maps.MapTypeId.SATELLITE);
-      })
-      .start(); // Start the tween immediately.
+      
 
-    function animate(time: number) {
-      requestAnimationFrame(animate);
-      update(time);
-    }
-    requestAnimationFrame(animate); 
-    this.initMap(cameraOptions,mapOptions)
-    //map.setOptions( { minZoom: 10 })
-*/
+      const centerControl = this.createControl(map);
+      google.maps.event.addListenerOnce(map, 'tilesloaded', function() {
 
-google.maps.event.addListenerOnce(map, 'tilesloaded', function() {
-  //alert("done loading")
- 
+    
+      });
 
-});
+
+
+  /*
+
+
+      new Tween(cameraOptions) // Create a new tween that modifies 'cameraOptions'.
+        .to({ heading: 90, zoom: 18 },15000) // Move to destination in 15 seconds.
+        .easing(Easing.Quadratic.Out) // Use an easing function to make the animation smooth.
+        .onUpdate(() => {
+          map.moveCamera(cameraOptions);
+        }).onComplete(()=> {
+
+          map.setMapTypeId(google.maps.MapTypeId.SATELLITE);
+        })
+        .start(); // Start the tween immediately.
+
+      function animate(time: number) {
+        requestAnimationFrame(animate);
+        update(time);
+      }
+      requestAnimationFrame(animate); 
+      this.initMap(cameraOptions,mapOptions)
+      //map.setOptions( { minZoom: 10 })
+    */
+
+
+
   }
   
   ngAfterViewInit(): void {
     
 
   }
+
+   createControl(map: any) {
+    const btnSelect = document.createElement('button');
+  
+    btnSelect.style.cssText = "background-color:#fff;border:2px solid #fff;border-radius: 3px;"
+    btnSelect.style.boxShadow = '0 2px 6px rgba(0,0,0,.3)';
+    btnSelect.style.color = 'rgb(25,25,25)';
+    btnSelect.style.color = 'rgb(25,25,25)';
+    btnSelect.style.cursor = 'pointer';
+    btnSelect.style.fontFamily = 'Roboto,Arial,sans-serif';
+    btnSelect.style.fontSize = '16px';
+    btnSelect.style.lineHeight = '38px';
+    btnSelect.style.margin = '8px 0 22px';
+    btnSelect.style.padding = '0 5px';
+    btnSelect.style.textAlign = 'center';
+
+    btnSelect.textContent = 'Lasso-Select';
+    btnSelect.title = 'Select farm area';
+    btnSelect.type = 'button';
+  
+    // Setup the click event listeners: simply set the map to Chicago.
+    btnSelect.addEventListener('click', () => {
+      map.setCenter(this.chicago);
+    });
+
+    function addHoverStyles() {
+      btnSelect.style.backgroundColor = 'lightgrey'; // Example hover style
+      // Add more hover styles as needed
+    }
+    
+    // Define a function to remove hover styles
+    function removeHoverStyles() {
+      btnSelect.style.backgroundColor = 'white'; // Remove the hover style
+      // Remove other hover styles as needed
+    }
+    
+    // Add event listeners to apply and remove hover styles
+    btnSelect.addEventListener('mouseenter', addHoverStyles);
+    btnSelect.addEventListener('mouseleave', removeHoverStyles);
+
+    map.controls[google.maps.ControlPosition.TOP_CENTER].push(btnSelect);
+
+  
+    
+  }
+  
+
 /*
   animateToSatelliteMap(map: google.maps.Map): void {
 
