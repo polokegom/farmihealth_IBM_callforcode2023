@@ -79,8 +79,10 @@ export class TestCodeComponent implements OnInit {
     svg.select('g.drawPoly').remove();
     const g = svg.append('g');
     g.append('polygon')
+    .attr('fill-opacity', 0.5)
+    .attr('stroke', 'grey')
     .attr('points', this.points.map(point => point.join(',')).join(' '))
-    .style('fill', "lightgrey");
+    .style('fill', "red");
     for (let i = 0; i < this.points.length; i++) {
       const circle = g.selectAll('circles')
         .data([this.points[i]])
@@ -92,6 +94,7 @@ export class TestCodeComponent implements OnInit {
         .attr('fill', 'grey')
         .attr('stroke', '#000')
         .attr('is-handle', 'true')
+        .attr('fill-opacity', 0.5)
         .style('cursor', 'move')
         .call(this.dragger);
     }

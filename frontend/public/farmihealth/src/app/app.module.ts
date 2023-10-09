@@ -19,6 +19,7 @@ import { AddDroneComponent } from './add-drone/add-drone.component';
 import { FarmMapComponent } from './farm-map/farm-map.component';
 import {GoogleMapsModule} from '@angular/google-maps';
 import { TestCodeComponent } from './test-code/test-code.component';
+import { TestCodeMapComponent } from './test-code-map/test-code-map.component';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { TestCodeComponent } from './test-code/test-code.component';
     AdddroneComponent,
     AddDroneComponent,
     FarmMapComponent,
-    TestCodeComponent
+    TestCodeComponent,
+    TestCodeMapComponent
   ],
   imports: [
     BrowserModule,
