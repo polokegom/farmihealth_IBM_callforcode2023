@@ -39,8 +39,8 @@ export class TestCodeMapComponent implements OnInit, AfterViewInit{
 
 
   ngOnInit(): void {
-        // Load Google Maps with your API key
-        const script = document.createElement('script');
+
+      const script = document.createElement('script');
         script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyAWliISHIJ4PnZ73U5BQ2W9GN1_YxTuWOg&callback=initMap`;
         script.async = true;
         script.defer = true;
@@ -55,9 +55,9 @@ export class TestCodeMapComponent implements OnInit, AfterViewInit{
           const mapOptions = {
             ...cameraOptions,
             mapId: '15431d2b469f209e',
-            fullscreenControl: false, // Disable fullscreen control
-            mapTypeControl: false, // Disable map type control
-            streetViewControl: false, // Disable street view control,
+            fullscreenControl: false, 
+            mapTypeControl: false, 
+            streetViewControl: false,
             mapTypeId: google.maps.MapTypeId.SATELLITE,
             minZoom: 16,/*
             restriction: {

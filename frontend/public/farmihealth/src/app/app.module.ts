@@ -20,6 +20,9 @@ import { FarmMapComponent } from './farm-map/farm-map.component';
 import {GoogleMapsModule} from '@angular/google-maps';
 import { TestCodeComponent } from './test-code/test-code.component';
 import { TestCodeMapComponent } from './test-code-map/test-code-map.component';
+import { SetmapnameComponent } from './setmapname/setmapname.component';
+import { SetmapdroneComponent } from './setmapdrone/setmapdrone.component';
+import { SetmapscheduleComponent } from './setmapschedule/setmapschedule.component';
 
 
 @NgModule({
@@ -40,7 +43,10 @@ import { TestCodeMapComponent } from './test-code-map/test-code-map.component';
     AddDroneComponent,
     FarmMapComponent,
     TestCodeComponent,
-    TestCodeMapComponent
+    TestCodeMapComponent,
+    SetmapnameComponent,
+    SetmapdroneComponent,
+    SetmapscheduleComponent
   ],
   imports: [
     BrowserModule,
