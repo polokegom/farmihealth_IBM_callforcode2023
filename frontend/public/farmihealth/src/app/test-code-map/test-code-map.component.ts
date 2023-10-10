@@ -136,6 +136,8 @@ export class TestCodeMapComponent implements OnInit, AfterViewInit{
     btnBack.style.fontSize = '16px';
     btnBack.style.lineHeight = '38px';
     btnBack.style.left= '0px';
+    btnBack.style.width = '70px';
+
     btnBack.style.margin = '8px 0 22px';
     btnBack.style.marginLeft = '10px';
    // btnBack.style.padding = '0 5px';
@@ -155,6 +157,8 @@ export class TestCodeMapComponent implements OnInit, AfterViewInit{
     btnSelect.style.lineHeight = '38px';
     btnSelect.style.margin = '8px 0 22px';
     btnSelect.style.padding = '0 5px';
+    btnSelect.style.width = '220px';
+
     btnSelect.style.textAlign = 'center';
 
     btnSelect.textContent = 'Select Drone Area';
@@ -166,13 +170,11 @@ export class TestCodeMapComponent implements OnInit, AfterViewInit{
     btnContinue.style.cssText = "background-color:#fff;border:2px solid #fff;border-radius: 3px;"
     btnContinue.style.boxShadow = '0 2px 6px rgba(0,0,0,.3)';
     btnContinue.style.color = 'rgb(25,25,25)';
-    btnContinue.style.color = 'rgb(25,25,25)';
     btnContinue.style.cursor = 'pointer';
     btnContinue.style.fontFamily = 'Roboto,Arial,sans-serif';
     btnContinue.style.fontSize = '16px';
     btnContinue.style.lineHeight = '38px';
     btnContinue.style.margin = '8px 0 22px';
-    btnContinue.style.marginLeft = '10px';
     btnContinue.style.marginBottom = '25px';
     btnContinue.style.padding = '0 5px';
     btnContinue.style.textAlign = 'center';
@@ -180,6 +182,7 @@ export class TestCodeMapComponent implements OnInit, AfterViewInit{
     btnContinue.textContent = 'CONTINUE';
     btnContinue.title = 'Select farm area';
     btnContinue.type = 'button';
+    btnContinue.style.width = '150px';
     btnContinue.disabled = true;
   
     // Setup the click event listeners: simply set the map to Chicago.
