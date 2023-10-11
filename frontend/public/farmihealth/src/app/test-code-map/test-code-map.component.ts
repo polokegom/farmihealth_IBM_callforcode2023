@@ -1,15 +1,9 @@
-import { Component, OnInit,  AfterViewInit} from '@angular/core';
+import { Component, OnInit,  AfterViewInit, ViewChild, ElementRef} from '@angular/core';
 import { Tween, update, Easing } from '@tweenjs/tween.js';
 import { delay } from 'rxjs';
-// Import Google Maps types
+import * as d3 from 'd3';
 
-// Define the Country interface here
-interface Country {
-  bounds: number[][];
-  name: string;
-  start: string[];
-  end: string[];
-}
+
 
 
 
@@ -22,9 +16,11 @@ interface Country {
 })
 
 
-export class TestCodeMapComponent implements OnInit, AfterViewInit{
+export class TestCodeMapComponent implements OnInit, AfterViewInit, ViewChild{
+  @ViewChild('svgContainer', { static: true }) svgContainer!: ElementRef;
 
   mapIsLoading: Boolean = true;
+   svg: any; // Reference to the created SVG
   NEW_ZEALAND_BOUNDS = {
     north: -34.36,
     south: -47.35,
@@ -35,7 +31,20 @@ export class TestCodeMapComponent implements OnInit, AfterViewInit{
   chicago = { lat: 41.85, lng: -87.65 };
 
 
+  private dragging = false;
+  private drawing = false;
+  private startPoint!: [number, number];
+  private points: [number, number][] = [];
+  private g: any;
+  private dragger: any;
   constructor() { }
+  descendants!: boolean;
+  emitDistinctChangesOnly!: boolean;
+  first!: boolean;
+  read: any;
+  isViewQuery!: boolean;
+  selector: any;
+  static?: boolean | undefined;
 
 
   ngOnInit(): void {
@@ -187,7 +196,32 @@ export class TestCodeMapComponent implements OnInit, AfterViewInit{
   
     // Setup the click event listeners: simply set the map to Chicago.
     btnSelect.addEventListener('click', () => {
-      map.setCenter(this.chicago);
+      if (btnSelect.textContent == "Select Drone Area")
+        btnSelect.textContent = 'Remove Selection';
+      
+        // Create and insert the SVG
+        if (!this.svg) {
+          this.svg = d3.select(this.svgContainer.nativeElement)
+            .append('svg')
+            .attr('width', '100%')
+            .attr('height', '100%')
+            .attr('xmlns', 'http://www.w3.org/2000/svg');
+
+          // Add a background image
+          this.svg
+            .append('image')
+            .attr('x', 0)
+            .attr('y', 0)
+            .attr('width', '100%')
+            .attr('xlink:href', 'https://assets.amerimacmanagement.com/wp-content/uploads/2021/11/Overhead-Map-of-Possible-Residential-Area.jpg');
+
+          // Other SVG elements can be added here
+        }
+      
+      else
+        btnSelect.textContent = 'Select Drone Area';
+
+      //map.setCenter(this.chicago);
     });
 
     function addHoverStyles() {

@@ -11,8 +11,7 @@ import { FooterComponent } from './footer/footer.component';
 import { DronelistComponent } from './dronelist/dronelist.component';
 import { MenulistComponent } from './menulist/menulist.component';
 import { ScanfieldComponent } from './scanfield/scanfield.component';
-import { FinescanfieldComponent } from './finescanfield/finescanfield.component';
-import { ShowfarmstatusComponent } from './showfarmstatus/showfarmstatus.component';
+
 import { HomepageComponent } from './homepage/homepage.component';
 import { AdddroneComponent } from './adddrone/adddrone.component';
 import { AddDroneComponent } from './add-drone/add-drone.component';
@@ -23,6 +22,7 @@ import { TestCodeMapComponent } from './test-code-map/test-code-map.component';
 import { SetmapnameComponent } from './setmapname/setmapname.component';
 import { SetmapdroneComponent } from './setmapdrone/setmapdrone.component';
 import { SetmapscheduleComponent } from './setmapschedule/setmapschedule.component';
+import { ViewcropmaphealthComponent } from './viewcropmaphealth/viewcropmaphealth.component';
 
 
 @NgModule({
@@ -36,8 +36,6 @@ import { SetmapscheduleComponent } from './setmapschedule/setmapschedule.compone
     DronelistComponent,
     MenulistComponent,
     ScanfieldComponent,
-    FinescanfieldComponent,
-    ShowfarmstatusComponent,
     HomepageComponent,
     AdddroneComponent,
     AddDroneComponent,
@@ -46,7 +44,8 @@ import { SetmapscheduleComponent } from './setmapschedule/setmapschedule.compone
     TestCodeMapComponent,
     SetmapnameComponent,
     SetmapdroneComponent,
-    SetmapscheduleComponent
+    SetmapscheduleComponent,
+    ViewcropmaphealthComponent
   ],
   imports: [
     BrowserModule,
