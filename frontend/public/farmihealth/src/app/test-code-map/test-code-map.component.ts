@@ -1,5 +1,5 @@
 import { Component, OnInit,  AfterViewInit, ViewChild, ElementRef} from '@angular/core';
-import { Tween, update, Easing } from '@tweenjs/tween.js';
+import { Tween, update, Easing, remove } from '@tweenjs/tween.js';
 import { delay } from 'rxjs';
 import * as d3 from 'd3';
 
@@ -148,6 +148,7 @@ export class TestCodeMapComponent implements OnInit, AfterViewInit, ViewChild{
 
     this.dragger = d3.drag()
       .on('drag', this.handleDrag)
+      
       .on('end', () => {
         this.dragging = false;
       });
@@ -174,7 +175,8 @@ export class TestCodeMapComponent implements OnInit, AfterViewInit, ViewChild{
           .attr('cy', this.points[i][1])
           .attr('r', 5)
           .attr('stroke-width', 2)
-          .attr('fill', 'grey')
+          .attr('fill-opacity', 0.8)
+          .attr('fill', 'red')
           .attr('stroke', '#404142')
           .attr('is-handle', 'true')
           .style('cursor', 'pointer');
@@ -266,17 +268,17 @@ export class TestCodeMapComponent implements OnInit, AfterViewInit, ViewChild{
       if (btnSelect.textContent == "Select Drone Area"){
         btnSelect.textContent = 'Remove Selection';
       
-
-          this.drawOnMapEvent = google.maps.event.addListener(map,"mouseover",
+        svgContainer.style.display = "flex";
+          /*this.drawOnMapEvent = google.maps.event.addListener(map,"mouseover",
             () => {
-              svgContainer.style.display = "flex";
+              
               });
-    
+          */
         
         } else {
 
-          svgContainer.style.display = "hidden";
-
+          svgContainer.style.display = "none";
+          svg.remove();
           btnSelect.textContent = 'Select Drone Area';
           google.maps.event.removeListener(this.drawOnMapEvent);
         //map.setCenter(this.chicago);
@@ -315,6 +317,7 @@ export class TestCodeMapComponent implements OnInit, AfterViewInit, ViewChild{
     g.append('polygon')
     .attr('fill-opacity', 0.8)
     .attr('stroke', '#404142')
+
     .attr('stroke-width', 2)
     .attr('points', this.points.map(point => point.join(',')).join(' '))
     .style('fill', "red");
@@ -325,7 +328,9 @@ export class TestCodeMapComponent implements OnInit, AfterViewInit, ViewChild{
         .append('circle')
         .attr('cx', this.points[i][0])
         .attr('cy', this.points[i][1])
-        .attr('r', 4)
+        .attr('r', 5)
+        .attr("class","farm-map")
+
         .attr('fill', 'grey')
         .attr('stroke', '#000')
         .attr('is-handle', 'true')
