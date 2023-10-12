@@ -153,7 +153,7 @@ export class TestCodeMapComponent implements OnInit, AfterViewInit, ViewChild{
     btnBack.style.cursor = 'pointer';
     btnBack.style.fontFamily = 'Roboto,Arial,sans-serif';
     btnBack.style.fontSize = '16px';
-    btnBack.style.lineHeight = '38px';
+    btnBack.style.lineHeight = '36px';
     btnBack.style.left= '0px';
     btnBack.style.width = '70px';
     btnBack.style.zIndex = "40"
@@ -239,7 +239,7 @@ export class TestCodeMapComponent implements OnInit, AfterViewInit, ViewChild{
           svg.selectAll('*').remove();
           btnSelect.textContent = 'Select Drone Area';
           
-          btnContinue.style.color = "";
+          btnContinue.style.color = "white";
           btnContinue.style.backgroundColor = "#6a6b6b";
           btnContinue.style.border = "1px solid #e3e4e6";
           google.maps.event.removeListener(this.drawOnMapEvent);
@@ -260,8 +260,23 @@ export class TestCodeMapComponent implements OnInit, AfterViewInit, ViewChild{
     }
     
     // Add event listeners to apply and remove hover styles
-    btnSelect.addEventListener('mouseenter', addHoverStyles);
-    btnSelect.addEventListener('mouseleave', removeHoverStyles);
+    btnSelect.addEventListener('mouseenter', ()=> btnSelect.style.backgroundColor = 'lightgrey');
+    btnSelect.addEventListener('mouseleave', ()=> btnSelect.style.backgroundColor = 'white');
+    btnBack.addEventListener('mouseenter', ()=> btnBack.style.backgroundColor = 'lightgrey');
+    btnBack.addEventListener('mouseleave', ()=> btnBack.style.backgroundColor = 'white');
+    
+    btnContinue.addEventListener('mouseenter', ()=> {
+      if (this.makePolygon)
+          btnContinue.style.backgroundColor = 'lightgrey'
+    
+    });
+
+    btnContinue.addEventListener('mouseleave', ()=> {
+      
+      if (this.makePolygon)
+          btnContinue.style.backgroundColor = 'white'
+    
+    });
     map.controls[google.maps.ControlPosition.LEFT_TOP].push(svgContainer);
     map.controls[google.maps.ControlPosition.LEFT_TOP].push(btnBack);
     map.controls[google.maps.ControlPosition.TOP_CENTER].push(btnSelect);
