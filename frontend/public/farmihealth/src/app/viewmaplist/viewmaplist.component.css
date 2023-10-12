@@ -1,12 +1,22 @@
 #search {
 
     margin-top: 90px;
-    padding-left:20px;
-    width: 410px;
+    width: 390px;
     height: 40px;
     border-radius: 10px;;
     border: 1px solid rgb(177, 168, 168);
+    
+    padding: 5px;
+    padding-left:45px;
+    padding-right:15px;
+    font-size:14px;
+    box-shadow:0 10px 5px rgba(146, 161, 176, 0.15);
 
+    background-image: url("https://cdn-icons-png.flaticon.com/512/3031/3031293.png");
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-position: 8px;
+    background-size:16px;
 
 }
 
@@ -40,12 +50,12 @@ ul li {
 }
 
 div {
-    background-color: rgb(238, 238, 238);
+    background-color: rgb(245, 245, 245);
 }
 
 ul li:hover {
 
-   color: rgb(247, 243, 243);;
+    color: rgb(247, 243, 243);;
     cursor:pointer;
     background-color: rgb(11, 121, 211);
 }
