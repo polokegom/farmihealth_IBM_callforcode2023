@@ -23,6 +23,7 @@ import { SetmapnameComponent } from './setmapname/setmapname.component';
 import { SetmapdroneComponent } from './setmapdrone/setmapdrone.component';
 import { SetmapscheduleComponent } from './setmapschedule/setmapschedule.component';
 import { ViewcropmaphealthComponent } from './viewcropmaphealth/viewcropmaphealth.component';
+import { TestPolyComponent } from './test-poly/test-poly.component';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import { ViewcropmaphealthComponent } from './viewcropmaphealth/viewcropmaphealt
     SetmapnameComponent,
     SetmapdroneComponent,
     SetmapscheduleComponent,
-    ViewcropmaphealthComponent
+    ViewcropmaphealthComponent,
+    TestPolyComponent
   ],
   imports: [
     BrowserModule,
