@@ -17,9 +17,6 @@ import { FarmMapComponent } from './farm-map/farm-map.component';
 import {GoogleMapsModule} from '@angular/google-maps';
 import { TestCodeComponent } from './test-code/test-code.component';
 import { TestCodeMapComponent } from './test-code-map/test-code-map.component';
-import { SetmapnameComponent } from './setmapname/setmapname.component';
-import { SetmapdroneComponent } from './setmapdrone/setmapdrone.component';
-import { SetmapscheduleComponent } from './setmapschedule/setmapschedule.component';
 import { TestPolyComponent } from './test-poly/test-poly.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ViewScheduleListComponent } from './view-schedule-list/view-schedule-list.component';
@@ -27,8 +24,6 @@ import { ViewMapListComponent } from './view-map-list/view-map-list.component';
 import { ViewCropHealthComponent } from './view-crop-health/view-crop-health.component';
 import { SetMapNameComponent } from './set-map-name/set-map-name.component';
 import { ConfigMapDroneComponent } from './config-map-drone/config-map-drone.component';
-import { SetMapDroneComponent } from './set-map-drone/set-map-drone.component';
-import { SetMapDroneScheduleComponent } from './set-map-drone-schedule/set-map-drone-schedule.component';
 
 
 @NgModule({
@@ -46,17 +41,13 @@ import { SetMapDroneScheduleComponent } from './set-map-drone-schedule/set-map-d
     FarmMapComponent,
     TestCodeComponent,
     TestCodeMapComponent,
-    SetmapnameComponent,
-    SetmapdroneComponent,
-    SetmapscheduleComponent,
+
     TestPolyComponent,
     ViewScheduleListComponent,
     ViewMapListComponent,
     ViewCropHealthComponent,
     SetMapNameComponent,
-    ConfigMapDroneComponent,
-    SetMapDroneComponent,
-    SetMapDroneScheduleComponent
+    ConfigMapDroneComponent
   ],
   imports: [
     BrowserModule,
