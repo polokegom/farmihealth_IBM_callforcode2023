@@ -45,7 +45,7 @@ export class TestCodeMapComponent implements OnInit, AfterViewInit, ViewChild{
   isViewQuery!: boolean;
   selector: any;
   static?: boolean | undefined;
-
+  drawOnMapEvent: any;
 
   ngOnInit(): void {
 
@@ -135,6 +135,66 @@ export class TestCodeMapComponent implements OnInit, AfterViewInit, ViewChild{
 
    createControl(map: any) {
 
+
+    const svgContainer = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    const divSvgContainer = document.createElement('div');
+    svgContainer.setAttribute('width', '100%');
+    svgContainer.setAttribute('height', '100%');
+    //svgContainer.style.marginTop = "200px";
+
+    const svg = d3.select(svgContainer);
+
+
+
+    this.dragger = d3.drag()
+      .on('drag', this.handleDrag)
+      .on('end', () => {
+        this.dragging = false;
+      });
+
+    svg.on('mouseup', () => {
+      if (this.dragging) return;
+      this.drawing = true;
+      const [x, y] = d3.mouse(svgContainer);
+      this.startPoint = [x, y];
+      if (svg.select('g.drawPoly').empty()) this.g = svg.append('g').attr('class', 'drawPoly');
+      if (d3.event.target.hasAttribute('is-handle')) {
+        this.closePolygon(svg, svgContainer);
+        return;
+      }
+      this.points.push([x, y]);
+      this.g.select('polyline').remove();
+      const polyline = this.g.append('polyline').attr('points', this.points)
+        .style('fill', 'none')
+        .attr('stroke', '#2c2d2e')
+        .attr('stroke-width', 2);
+      for (let i = 0; i < this.points.length; i++) {
+        this.g.append('circle')
+          .attr('cx', this.points[i][0])
+          .attr('cy', this.points[i][1])
+          .attr('r', 5)
+          .attr('stroke-width', 2)
+          .attr('fill', 'grey')
+          .attr('stroke', '#404142')
+          .attr('is-handle', 'true')
+          .style('cursor', 'pointer');
+      }
+    });
+
+    svg.on('mousemove', () => {
+      if (!this.drawing) return;
+      const g = d3.select('g.drawPoly');
+      g.select('line').remove();
+      const line = g.append('line')
+        .attr('x1', this.startPoint[0])
+        .attr('y1', this.startPoint[1])
+        .attr('x2', d3.mouse(svgContainer)[0] + 2)
+        .attr('y2', d3.mouse(svgContainer)[1])
+        .attr('stroke', '#2c2d2e')
+        .attr('stroke-width', 2);;
+    });
+
+    //container!.appendChild(svg);
     const btnBack = document.createElement('button');
     btnBack.style.cssText = "background-color:#fff;border:2px solid #fff;border-radius: 3px;"
     btnBack.style.boxShadow = '0 2px 6px rgba(0,0,0,.3)';
@@ -146,6 +206,7 @@ export class TestCodeMapComponent implements OnInit, AfterViewInit, ViewChild{
     btnBack.style.lineHeight = '38px';
     btnBack.style.left= '0px';
     btnBack.style.width = '70px';
+    btnBack.style.zIndex = "40"
 
     btnBack.style.margin = '8px 0 22px';
     btnBack.style.marginLeft = '10px';
@@ -165,6 +226,7 @@ export class TestCodeMapComponent implements OnInit, AfterViewInit, ViewChild{
     btnSelect.style.fontSize = '16px';
     btnSelect.style.lineHeight = '38px';
     btnSelect.style.margin = '8px 0 22px';
+    btnSelect.style.marginBottom = '8px';
     btnSelect.style.padding = '0 5px';
     btnSelect.style.width = '220px';
 
@@ -173,6 +235,8 @@ export class TestCodeMapComponent implements OnInit, AfterViewInit, ViewChild{
     btnSelect.textContent = 'Select Drone Area';
     btnSelect.title = 'Select farm area';
     btnSelect.type = 'button';
+    btnSelect.style.zIndex = "40"
+
 
 
     const btnContinue = document.createElement('button');
@@ -193,83 +257,31 @@ export class TestCodeMapComponent implements OnInit, AfterViewInit, ViewChild{
     btnContinue.type = 'button';
     btnContinue.style.width = '150px';
     btnContinue.disabled = true;
+    btnContinue.style.zIndex = "40"
+
+
+    svgContainer.style.display = "none";
   
-    // Setup the click event listeners: simply set the map to Chicago.
     btnSelect.addEventListener('click', () => {
-      if (btnSelect.textContent == "Select Drone Area")
+      if (btnSelect.textContent == "Select Drone Area"){
         btnSelect.textContent = 'Remove Selection';
       
-        // Create and insert the SVG
-        if (!this.svg) {
-          const svgContainer = this.svgContainer.nativeElement;
-          this.svg = d3.select(svgContainer)
-            .append('svg')
-            .attr('width', '100%')
-            .attr('height', '100%')
-            .attr('xmlns', 'http://www.w3.org/2000/svg');
-          /*
-          // Add a background image
-          this.svg
-            .append('image')
-            .attr('x', 0)
-            .attr('y', 0)
-            .attr('width', '100%')
-            .attr('xlink:href', 'https://assets.amerimacmanagement.com/wp-content/uploads/2021/11/Overhead-Map-of-Possible-Residential-Area.jpg');
-          */
-            this.dragger = d3.drag()
-            .on('drag', this.handleDrag)
-            .on('end', () => {
-              this.dragging = false;
-            });
-      
-          this.svg.on('mouseup', () => {
-            if (this.dragging) return;
-            this.drawing = true;
-            const [x, y] = d3.mouse(svgContainer);
-            this.startPoint = [x, y];
-            if (this.svg.select('g.drawPoly').empty()) this.g = this.svg.append('g').attr('class', 'drawPoly');
-            if (d3.event.target.hasAttribute('is-handle')) {
-              this.closePolygon();
-              return;
-            }
-            this.points.push([x, y]);
-            this.g.select('polyline').remove();
-            const polyline = this.g.append('polyline').attr('points', this.points)
-              .style('fill', 'none')
-              .attr('stroke', '#000');
-            for (let i = 0; i < this.points.length; i++) {
-              this.g.append('circle')
-                .attr('cx', this.points[i][0])
-                .attr('cy', this.points[i][1])
-                .attr('r', 4)
-                .attr('fill', 'grey')
-                .attr('stroke', '#000')
-                .attr('is-handle', 'true')
-                .style('cursor', 'pointer');
-            }
-          });
-      
-          this.svg.on('mousemove', () => {
-            if (!this.drawing) return;
-            const g = d3.select('g.drawPoly');
-            g.select('line').remove();
-            const line = g.append('line')
-              .attr('x1', this.startPoint[0])
-              .attr('y1', this.startPoint[1])
-              .attr('x2', d3.mouse(svgContainer)[0] + 2)
-              .attr('y2', d3.mouse(svgContainer)[1])
-              .attr('stroke', 'grey')
-              .attr('stroke-width', 1);
-          });
 
-
-          // Other SVG elements can be added here
+          this.drawOnMapEvent = google.maps.event.addListener(map,"mouseover",
+            () => {
+              svgContainer.style.display = "flex";
+              });
+    
         
-        
-        } else
-        btnSelect.textContent = 'Select Drone Area';
+        } else {
 
-      //map.setCenter(this.chicago);
+          svgContainer.style.display = "hidden";
+
+          btnSelect.textContent = 'Select Drone Area';
+          google.maps.event.removeListener(this.drawOnMapEvent);
+        //map.setCenter(this.chicago);
+        }
+    
     });
 
     function addHoverStyles() {
@@ -286,25 +298,24 @@ export class TestCodeMapComponent implements OnInit, AfterViewInit, ViewChild{
     // Add event listeners to apply and remove hover styles
     btnSelect.addEventListener('mouseenter', addHoverStyles);
     btnSelect.addEventListener('mouseleave', removeHoverStyles);
-
+    map.controls[google.maps.ControlPosition.LEFT_TOP].push(svgContainer);
     map.controls[google.maps.ControlPosition.LEFT_TOP].push(btnBack);
     map.controls[google.maps.ControlPosition.TOP_CENTER].push(btnSelect);
     map.controls[google.maps.ControlPosition.BOTTOM_CENTER].push(btnContinue);
-
+    
   
     
   }
   
 
-  closePolygon() {
-    const svgContainer = this.svgContainer.nativeElement;
-    const svg = d3.select(svgContainer);
+  closePolygon(svg: any, svgContainer: any) {
 
     svg.select('g.drawPoly').remove();
     const g = svg.append('g');
     g.append('polygon')
-    .attr('fill-opacity', 0.5)
-    .attr('stroke', 'grey')
+    .attr('fill-opacity', 0.8)
+    .attr('stroke', '#404142')
+    .attr('stroke-width', 2)
     .attr('points', this.points.map(point => point.join(',')).join(' '))
     .style('fill', "red");
     for (let i = 0; i < this.points.length; i++) {
