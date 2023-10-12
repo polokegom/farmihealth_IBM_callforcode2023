@@ -206,7 +206,7 @@ export class TestCodeMapComponent implements OnInit, AfterViewInit, ViewChild{
     btnContinue.type = 'button';
   
     btnContinue.style.color = "white";
-    btnContinue.style.backgroundColor = "#909191";
+    btnContinue.style.backgroundColor = "#797a7a";
     btnContinue.style.width = '150px';
     btnContinue.disabled = true;
     btnContinue.style.zIndex = "40"
@@ -239,8 +239,8 @@ export class TestCodeMapComponent implements OnInit, AfterViewInit, ViewChild{
           svg.selectAll('*').remove();
           btnSelect.textContent = 'Select Drone Area';
           
-          btnContinue.style.color = "white";
-          btnContinue.style.backgroundColor = "#797a7a";
+          btnContinue.style.color = "";
+          btnContinue.style.backgroundColor = "#6a6b6b";
           btnContinue.style.border = "1px solid #e3e4e6";
           google.maps.event.removeListener(this.drawOnMapEvent);
         //map.setCenter(this.chicago);
