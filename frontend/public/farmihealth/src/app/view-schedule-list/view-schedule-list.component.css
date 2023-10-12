@@ -1,0 +1,61 @@
+#search {
+
+    margin-top: 90px;
+    width: 375px;
+    height: 40px;
+    border-radius: 10px;;
+    border: 1px solid rgb(177, 168, 168);
+    
+    padding: 5px;
+    padding-left:45px;
+    padding-right:15px;
+    font-size:14px;
+    box-shadow:0 10px 5px rgba(146, 161, 176, 0.15);
+
+    background-image: url("https://cdn-icons-png.flaticon.com/512/3031/3031293.png");
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-position: 8px;
+    background-size:16px;
+
+}
+
+
+ul {
+
+    list-style: none;
+    margin-top:10px;
+    text-align: center;
+    align-content: center;
+   /* border: 1px solid rgb(184, 182, 182);*/
+    border-radius: 7px;;
+
+    margin-left: 0px;
+    padding: 20px;
+
+}
+
+
+ul li {
+
+    border: 1px solid rgb(184, 182, 182);
+    width: 420px;
+    height: 40px;
+    margin-left: 0px;
+    padding-top: 20px;
+    margin-top: 20px;/**/
+    background-color: white;
+    color: rgb(13, 78, 6);
+
+}
+
+div {
+    background-color: rgb(245, 245, 245);
+}
+
+ul li:hover {
+
+    color: rgb(247, 243, 243);;
+    cursor:pointer;
+    background-color: rgb(65, 156, 53);
+}
