@@ -24,6 +24,7 @@ import { SetmapdroneComponent } from './setmapdrone/setmapdrone.component';
 import { SetmapscheduleComponent } from './setmapschedule/setmapschedule.component';
 import { ViewcropmaphealthComponent } from './viewcropmaphealth/viewcropmaphealth.component';
 import { TestPolyComponent } from './test-poly/test-poly.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -52,7 +53,8 @@ import { TestPolyComponent } from './test-poly/test-poly.component';
   imports: [
     BrowserModule,
     GoogleMapsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
