@@ -28,6 +28,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AllmaplistComponent } from './allmaplist/allmaplist.component';
 import { ViewmaplistComponent } from './viewmaplist/viewmaplist.component';
 import { ViewAvailableMapListComponent } from './view-available-map-list/view-available-map-list.component';
+import { ViewScheduleListComponent } from './view-schedule-list/view-schedule-list.component';
 
 
 @NgModule({
@@ -54,7 +55,8 @@ import { ViewAvailableMapListComponent } from './view-available-map-list/view-av
     TestPolyComponent,
     AllmaplistComponent,
     ViewmaplistComponent,
-    ViewAvailableMapListComponent
+    ViewAvailableMapListComponent,
+    ViewScheduleListComponent
   ],
   imports: [
     BrowserModule,
