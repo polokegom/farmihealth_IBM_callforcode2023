@@ -33,6 +33,7 @@ export class TestCodeMapComponent implements OnInit, AfterViewInit, ViewChild{
 
   private dragging = false;
   private drawing = false;
+  private makePolygon = false; 
   private startPoint!: [number, number];
   private points: [number, number][] = [];
   private g: any;
@@ -140,10 +141,137 @@ export class TestCodeMapComponent implements OnInit, AfterViewInit, ViewChild{
     const divSvgContainer = document.createElement('div');
     svgContainer.setAttribute('width', '100%');
     svgContainer.setAttribute('height', '100%');
-    //svgContainer.style.marginTop = "200px";
-
+    svgContainer.style.zIndex = "30";    //svgContainer.style.marginTop = "200px";
     const svg = d3.select(svgContainer);
+  
+    //container!.appendChild(svg);
+    const btnBack = document.createElement('button');
+    btnBack.style.cssText = "background-color:#fff;border:2px solid #fff;border-radius: 3px;"
+    btnBack.style.boxShadow = '0 2px 6px rgba(0,0,0,.3)';
+    btnBack.style.color = 'rgb(25,25,25)';
+    btnBack.style.color = 'rgb(25,25,25)';
+    btnBack.style.cursor = 'pointer';
+    btnBack.style.fontFamily = 'Roboto,Arial,sans-serif';
+    btnBack.style.fontSize = '16px';
+    btnBack.style.lineHeight = '38px';
+    btnBack.style.left= '0px';
+    btnBack.style.width = '70px';
+    btnBack.style.zIndex = "40"
 
+    btnBack.style.margin = '8px 0 22px';
+    btnBack.style.marginLeft = '10px';
+   // btnBack.style.padding = '0 5px';
+
+    btnBack.textContent = 'Home';
+    btnBack.title = 'Back to main menu';
+    btnBack.type = 'button';
+
+    const btnSelect = document.createElement('button');
+    btnSelect.style.cssText = "background-color:#fff;border:2px solid #fff;border-radius: 3px;"
+    btnSelect.style.boxShadow = '0 2px 6px rgba(0,0,0,.3)';
+    btnSelect.style.color = 'rgb(25,25,25)';
+    btnSelect.style.color = 'rgb(25,25,25)';
+    btnSelect.style.cursor = 'pointer';
+    btnSelect.style.fontFamily = 'Roboto,Arial,sans-serif';
+    btnSelect.style.fontSize = '16px';
+    btnSelect.style.lineHeight = '38px';
+    btnSelect.style.margin = '8px 0 22px';
+    btnSelect.style.marginBottom = '8px';
+    btnSelect.style.padding = '0 5px';
+    btnSelect.style.width = '220px';
+
+    btnSelect.style.textAlign = 'center';
+
+    btnSelect.textContent = 'Select Drone Area';
+    btnSelect.title = 'Select farm area';
+    btnSelect.type = 'button';
+    btnSelect.style.zIndex = "40"
+
+
+
+    const btnContinue = document.createElement('button');
+    btnContinue.style.cssText = "border:1px solid #e3e4e6;border-radius: 3px;"
+    btnContinue.style.boxShadow = '0 2px 6px rgba(0,0,0,.3)';
+    btnContinue.style.cursor = 'pointer';
+    btnContinue.style.fontFamily = 'Roboto,Arial,sans-serif';
+    btnContinue.style.fontSize = '16px';
+    btnContinue.style.lineHeight = '38px';
+    btnContinue.style.margin = '8px 0 22px';
+    btnContinue.style.marginBottom = '25px';
+    btnContinue.style.padding = '0 5px';
+    btnContinue.style.textAlign = 'center';
+
+    btnContinue.textContent = 'CONTINUE';
+    btnContinue.title = 'Submit farm area';
+    btnContinue.type = 'button';
+  
+    btnContinue.style.color = "white";
+    btnContinue.style.backgroundColor = "#909191";
+    btnContinue.style.width = '150px';
+    btnContinue.disabled = true;
+    btnContinue.style.zIndex = "40"
+
+
+    svgContainer.style.display = "none";
+  
+    btnSelect.addEventListener('click', () => {
+      
+      if (!this.makePolygon){
+
+        svgContainer.style.display = "block";
+        const svg = d3.select(svgContainer);
+
+        this.sketchFarmArea(svg, svgContainer);        
+        btnSelect.textContent = 'Remove Selection';
+        btnContinue.style.backgroundColor = '#fff';
+        btnContinue.style.border = "1px solid #fff";
+        btnContinue.style.color = 'rgb(25,25,25)';
+
+          /*this.drawOnMapEvent = google.maps.event.addListener(map,"mouseover",
+            () => {
+              
+              });
+          */
+        
+        } else {
+
+          svgContainer.style.display = "none";
+          svg.selectAll('*').remove();
+          btnSelect.textContent = 'Select Drone Area';
+          
+          btnContinue.style.color = "white";
+          btnContinue.style.backgroundColor = "#797a7a";
+          btnContinue.style.border = "1px solid #e3e4e6";
+          google.maps.event.removeListener(this.drawOnMapEvent);
+        //map.setCenter(this.chicago);
+        }
+        this.makePolygon = !this.makePolygon;
+    });
+
+    function addHoverStyles() {
+      btnSelect.style.backgroundColor = 'lightgrey'; // Example hover style
+      // Add more hover styles as needed
+    }
+    
+    // Define a function to remove hover styles
+    function removeHoverStyles() {
+      btnSelect.style.backgroundColor = 'white'; // Remove the hover style
+      // Remove other hover styles as needed
+    }
+    
+    // Add event listeners to apply and remove hover styles
+    btnSelect.addEventListener('mouseenter', addHoverStyles);
+    btnSelect.addEventListener('mouseleave', removeHoverStyles);
+    map.controls[google.maps.ControlPosition.LEFT_TOP].push(svgContainer);
+    map.controls[google.maps.ControlPosition.LEFT_TOP].push(btnBack);
+    map.controls[google.maps.ControlPosition.TOP_CENTER].push(btnSelect);
+    map.controls[google.maps.ControlPosition.BOTTOM_CENTER].push(btnContinue);
+    
+  
+    
+  }
+
+  sketchFarmArea(svg: any, svgContainer: any){
 
 
     this.dragger = d3.drag()
@@ -196,117 +324,7 @@ export class TestCodeMapComponent implements OnInit, AfterViewInit, ViewChild{
         .attr('stroke-width', 2);;
     });
 
-    //container!.appendChild(svg);
-    const btnBack = document.createElement('button');
-    btnBack.style.cssText = "background-color:#fff;border:2px solid #fff;border-radius: 3px;"
-    btnBack.style.boxShadow = '0 2px 6px rgba(0,0,0,.3)';
-    btnBack.style.color = 'rgb(25,25,25)';
-    btnBack.style.color = 'rgb(25,25,25)';
-    btnBack.style.cursor = 'pointer';
-    btnBack.style.fontFamily = 'Roboto,Arial,sans-serif';
-    btnBack.style.fontSize = '16px';
-    btnBack.style.lineHeight = '38px';
-    btnBack.style.left= '0px';
-    btnBack.style.width = '70px';
-    btnBack.style.zIndex = "40"
 
-    btnBack.style.margin = '8px 0 22px';
-    btnBack.style.marginLeft = '10px';
-   // btnBack.style.padding = '0 5px';
-
-    btnBack.textContent = 'Home';
-    btnBack.title = 'Select farm area';
-    btnBack.type = 'button';
-
-    const btnSelect = document.createElement('button');
-    btnSelect.style.cssText = "background-color:#fff;border:2px solid #fff;border-radius: 3px;"
-    btnSelect.style.boxShadow = '0 2px 6px rgba(0,0,0,.3)';
-    btnSelect.style.color = 'rgb(25,25,25)';
-    btnSelect.style.color = 'rgb(25,25,25)';
-    btnSelect.style.cursor = 'pointer';
-    btnSelect.style.fontFamily = 'Roboto,Arial,sans-serif';
-    btnSelect.style.fontSize = '16px';
-    btnSelect.style.lineHeight = '38px';
-    btnSelect.style.margin = '8px 0 22px';
-    btnSelect.style.marginBottom = '8px';
-    btnSelect.style.padding = '0 5px';
-    btnSelect.style.width = '220px';
-
-    btnSelect.style.textAlign = 'center';
-
-    btnSelect.textContent = 'Select Drone Area';
-    btnSelect.title = 'Select farm area';
-    btnSelect.type = 'button';
-    btnSelect.style.zIndex = "40"
-
-
-
-    const btnContinue = document.createElement('button');
-    btnContinue.style.cssText = "background-color:#fff;border:2px solid #fff;border-radius: 3px;"
-    btnContinue.style.boxShadow = '0 2px 6px rgba(0,0,0,.3)';
-    btnContinue.style.color = 'rgb(25,25,25)';
-    btnContinue.style.cursor = 'pointer';
-    btnContinue.style.fontFamily = 'Roboto,Arial,sans-serif';
-    btnContinue.style.fontSize = '16px';
-    btnContinue.style.lineHeight = '38px';
-    btnContinue.style.margin = '8px 0 22px';
-    btnContinue.style.marginBottom = '25px';
-    btnContinue.style.padding = '0 5px';
-    btnContinue.style.textAlign = 'center';
-
-    btnContinue.textContent = 'CONTINUE';
-    btnContinue.title = 'Select farm area';
-    btnContinue.type = 'button';
-    btnContinue.style.width = '150px';
-    btnContinue.disabled = true;
-    btnContinue.style.zIndex = "40"
-
-
-    svgContainer.style.display = "none";
-  
-    btnSelect.addEventListener('click', () => {
-      if (btnSelect.textContent == "Select Drone Area"){
-        btnSelect.textContent = 'Remove Selection';
-      
-        svgContainer.style.display = "flex";
-          /*this.drawOnMapEvent = google.maps.event.addListener(map,"mouseover",
-            () => {
-              
-              });
-          */
-        
-        } else {
-
-          svgContainer.style.display = "none";
-          svg.remove();
-          btnSelect.textContent = 'Select Drone Area';
-          google.maps.event.removeListener(this.drawOnMapEvent);
-        //map.setCenter(this.chicago);
-        }
-    
-    });
-
-    function addHoverStyles() {
-      btnSelect.style.backgroundColor = 'lightgrey'; // Example hover style
-      // Add more hover styles as needed
-    }
-    
-    // Define a function to remove hover styles
-    function removeHoverStyles() {
-      btnSelect.style.backgroundColor = 'white'; // Remove the hover style
-      // Remove other hover styles as needed
-    }
-    
-    // Add event listeners to apply and remove hover styles
-    btnSelect.addEventListener('mouseenter', addHoverStyles);
-    btnSelect.addEventListener('mouseleave', removeHoverStyles);
-    map.controls[google.maps.ControlPosition.LEFT_TOP].push(svgContainer);
-    map.controls[google.maps.ControlPosition.LEFT_TOP].push(btnBack);
-    map.controls[google.maps.ControlPosition.TOP_CENTER].push(btnSelect);
-    map.controls[google.maps.ControlPosition.BOTTOM_CENTER].push(btnContinue);
-    
-  
-    
   }
   
 
@@ -338,10 +356,12 @@ export class TestCodeMapComponent implements OnInit, AfterViewInit, ViewChild{
         .style('cursor', 'move')
         .call(this.dragger);
     }
+
     this.points.splice(0);
     this.drawing = false;
-    alert("Closed window")
+  
   }
+
 
   handleDrag = () => {
     if (this.drawing) return;
