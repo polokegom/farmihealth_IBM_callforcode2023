@@ -25,6 +25,9 @@ import { SetmapscheduleComponent } from './setmapschedule/setmapschedule.compone
 import { ViewcropmaphealthComponent } from './viewcropmaphealth/viewcropmaphealth.component';
 import { TestPolyComponent } from './test-poly/test-poly.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AllmaplistComponent } from './allmaplist/allmaplist.component';
+import { ViewmaplistComponent } from './viewmaplist/viewmaplist.component';
+import { ViewAvailableMapListComponent } from './view-available-map-list/view-available-map-list.component';
 
 
 @NgModule({
@@ -48,7 +51,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     SetmapdroneComponent,
     SetmapscheduleComponent,
     ViewcropmaphealthComponent,
-    TestPolyComponent
+    TestPolyComponent,
+    AllmaplistComponent,
+    ViewmaplistComponent,
+    ViewAvailableMapListComponent
   ],
   imports: [
     BrowserModule,
