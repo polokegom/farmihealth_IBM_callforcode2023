@@ -24,6 +24,8 @@ import { ViewMapListComponent } from './view-map-list/view-map-list.component';
 import { ViewCropHealthComponent } from './view-crop-health/view-crop-health.component';
 import { SetMapNameComponent } from './set-map-name/set-map-name.component';
 import { ConfigMapDroneComponent } from './config-map-drone/config-map-drone.component';
+import { MaintenanceComponent } from './maintenance/maintenance.component';
+import { ViewDroneStatusComponent } from './view-drone-status/view-drone-status.component';
 
 
 @NgModule({
@@ -47,7 +49,9 @@ import { ConfigMapDroneComponent } from './config-map-drone/config-map-drone.com
     ViewMapListComponent,
     ViewCropHealthComponent,
     SetMapNameComponent,
-    ConfigMapDroneComponent
+    ConfigMapDroneComponent,
+    MaintenanceComponent,
+    ViewDroneStatusComponent
   ],
   imports: [
     BrowserModule,
