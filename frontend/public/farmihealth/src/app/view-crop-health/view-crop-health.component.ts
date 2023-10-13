@@ -3,9 +3,9 @@ import type * as GeoJSON from "geojson";
 
  
 
-  interface City {
+  interface location {
     center: google.maps.LatLngLiteral;
-    population: number;
+    size: number;
   }
 
 @Component({
@@ -16,22 +16,38 @@ import type * as GeoJSON from "geojson";
 export class ViewCropHealthComponent implements OnInit {
 
 
-citymap: Record<string, City> = {
-    chicago: {
-      center: { lat: 41.878, lng: -87.629 },
-      population: 2714856,
+
+
+citymap: Record<string, location> = {
+    point1: {
+      center: { lat: 37.094, lng: -95.713 },
+      size: 0.2
     },
-    newyork: {
-      center: { lat: 40.714, lng: -74.005 },
-      population: 8405837,
+    point2: {
+      center:{ lat: 37.092, lng: -95.715 },
+      size: 0.1,
     },
-    losangeles: {
-      center: { lat: 34.052, lng: -118.243 },
-      population: 3857799,
+    point3: {
+      center: { lat: 37.09, lng: -95.712 },
+      size: 0.2,
     },
-    vancouver: {
-      center: { lat: 49.25, lng: -123.1 },
-      population: 603502,
+    
+    point4: {
+      center: { lat: 37.092, lng: -95.716 },
+      size: 0.3,
+    },
+    point5: {
+      center: { lat: 37.0906, lng: -95.714 },
+      size: 0.2,
+    },
+    point6: {
+      center: { lat: 37.0915, lng: -95.713 },
+      size: 0.3,
+    },
+
+    point7: {
+      center: { lat: 37.089, lng: -95.716 },
+      size: 0.3,
     },
   };
 
@@ -89,26 +105,26 @@ citymap: Record<string, City> = {
     const map = new google.maps.Map(
       document.getElementById("map") as HTMLElement,
       {
-        zoom: 4,
+        zoom: 15,
         center: { lat: 37.09, lng: -95.712 },
         fullscreenControl: false, 
         mapTypeControl: false, 
         streetViewControl: false,
-        mapTypeId: "terrain",
+        mapTypeId: google.maps.MapTypeId.SATELLITE,
       }
     );
   
     for (const city in this.citymap) {
       // Add the circle for this city to the map.
       const cityCircle = new google.maps.Circle({
-        strokeColor: "blue",
+        strokeColor: "red",
         strokeOpacity: 0.8,
         strokeWeight: 2,
-        fillColor: "blue",
+        fillColor: "red",
         fillOpacity: 0.35,
         map,
         center: this.citymap[city].center,
-        radius: Math.sqrt(this.citymap[city].population) * 100,
+        radius: Math.sqrt(this.citymap[city].size) * 100,
       });
     }
   }
