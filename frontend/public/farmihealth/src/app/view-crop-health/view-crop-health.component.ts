@@ -91,6 +91,9 @@ citymap: Record<string, City> = {
       {
         zoom: 4,
         center: { lat: 37.09, lng: -95.712 },
+        fullscreenControl: false, 
+        mapTypeControl: false, 
+        streetViewControl: false,
         mapTypeId: "terrain",
       }
     );
@@ -98,10 +101,10 @@ citymap: Record<string, City> = {
     for (const city in this.citymap) {
       // Add the circle for this city to the map.
       const cityCircle = new google.maps.Circle({
-        strokeColor: "#FF0000",
+        strokeColor: "blue",
         strokeOpacity: 0.8,
         strokeWeight: 2,
-        fillColor: "#FF0000",
+        fillColor: "blue",
         fillOpacity: 0.35,
         map,
         center: this.citymap[city].center,
