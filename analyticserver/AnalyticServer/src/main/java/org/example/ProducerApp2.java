@@ -11,12 +11,12 @@ import java.util.List;
 import com.ibm.cloud.objectstorage.ClientConfiguration;
 import com.ibm.cloud.objectstorage.auth.AWSCredentials;
 import com.ibm.cloud.objectstorage.auth.AWSStaticCredentialsProvider;
-import com.ibm.cloud.objectstorage.client.builder.AwsClientBuilder.EndpointConfiguration;
+import com.ibm.cloud.objectstorage.client.builder.AwsClientBuilder.EndpointConfiguration;/*
 import com.ibm.cloud.objectstorage.services.aspera.transfer.AsperaConfig;
 import com.ibm.cloud.objectstorage.services.aspera.transfer.AsperaTransaction;
 import com.ibm.cloud.objectstorage.services.aspera.transfer.AsperaTransferManager;
 import com.ibm.cloud.objectstorage.services.aspera.transfer.AsperaTransferManagerBuilder;
-import com.ibm.cloud.objectstorage.services.aspera.transfer.AsperaTransferManagerConfig;
+import com.ibm.cloud.objectstorage.services.aspera.transfer.AsperaTransferManagerConfig;*/
 import com.ibm.cloud.objectstorage.services.s3.AmazonS3;
 import com.ibm.cloud.objectstorage.services.s3.AmazonS3ClientBuilder;
 import com.ibm.cloud.objectstorage.services.s3.model.Bucket;
@@ -161,6 +161,7 @@ public class ProducerApp2 {
         }
     
 
+        /* 
         public static void fastPostFrameToBucket(AmazonS3 cos,String apikey,String bucketName, String frameName, String framePath) {
            
    
@@ -180,7 +181,7 @@ public class ProducerApp2 {
             }
         }
 
-
+*/
         public static void getFrameFromBucket(AmazonS3 cos,String bucketName, String frameName, String framePath) {
             
             System.out.printf("Retrieving new Frame: %s\n", framePath);
