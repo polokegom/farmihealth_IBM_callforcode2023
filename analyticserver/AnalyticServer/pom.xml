@@ -32,11 +32,10 @@
             <version>4.5.1-1</version> 
         </dependency>
         <dependency>
-            <groupId>com.ibm.cloud</groupId>
-            <artifactId>ibm-cos-sdk</artifactId>
-            <version>RELEASE</version> <!-- Replace with the latest version -->
+            <groupId>com.ibm.cos</groupId>
+            <artifactId>ibm-cos-java-sdk</artifactId>
+            <version>2.8.0</version>
         </dependency>
-        
     </dependencies>
 
 
