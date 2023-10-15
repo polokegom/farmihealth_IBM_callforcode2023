@@ -2,6 +2,9 @@ package org.example;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.Properties;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
+
 import org.apache.kafka.clients.producer.*;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -9,6 +12,11 @@ import com.ibm.cloud.objectstorage.ClientConfiguration;
 import com.ibm.cloud.objectstorage.auth.AWSCredentials;
 import com.ibm.cloud.objectstorage.auth.AWSStaticCredentialsProvider;
 import com.ibm.cloud.objectstorage.client.builder.AwsClientBuilder.EndpointConfiguration;
+import com.ibm.cloud.objectstorage.services.aspera.transfer.AsperaConfig;
+import com.ibm.cloud.objectstorage.services.aspera.transfer.AsperaTransaction;
+import com.ibm.cloud.objectstorage.services.aspera.transfer.AsperaTransferManager;
+import com.ibm.cloud.objectstorage.services.aspera.transfer.AsperaTransferManagerBuilder;
+import com.ibm.cloud.objectstorage.services.aspera.transfer.AsperaTransferManagerConfig;
 import com.ibm.cloud.objectstorage.services.s3.AmazonS3;
 import com.ibm.cloud.objectstorage.services.s3.AmazonS3ClientBuilder;
 import com.ibm.cloud.objectstorage.services.s3.model.Bucket;
@@ -19,6 +27,9 @@ import com.ibm.cloud.objectstorage.services.s3.model.ObjectMetadata;
 import com.ibm.cloud.objectstorage.services.s3.model.PutObjectRequest;
 import com.ibm.cloud.objectstorage.services.s3.model.S3ObjectSummary;
 import com.ibm.cloud.objectstorage.oauth.BasicIBMOAuthCredentials;
+import com.ibm.cloud.objectstorage.oauth.DefaultTokenManager;
+import com.ibm.cloud.objectstorage.oauth.DelegateTokenProvider;
+import com.ibm.cloud.objectstorage.oauth.TokenManager;
 
 
 
@@ -78,10 +89,25 @@ public class ProducerApp2 {
 
             System.out.println("Current time: " + LocalDateTime.now());
             AmazonS3 cosClient = createClient(apiKey, serviceInstanceId, endpointUrl, location);
+
+            /* 
+            //Issue with using IBM Aspera
+            AsperaConfig asperaConfig = new AsperaConfig()
+            .withMultiSession(2)
+            .withMultiSessionThresholdMb(100);
+
+            TokenManager tokenManager = new DefaultTokenManager(new DelegateTokenProvider(apiKey));
             
+            AsperaTransferManager asperaTransferMgr = new AsperaTransferManagerBuilder(apiKey, cosClient)
+                .withAsperaConfig(asperaConfig)
+                .build();
+            */
+
+
             listObjects(cosClient, bucketName);
-            createBucket(cosClient, newBucketName);
+            //createBucket(cosClient, newBucketName);
             listBuckets(cosClient);
+
         }
 
         public static AmazonS3 createClient(String apiKey, String serviceInstanceId, String endpointUrl, String location)
@@ -134,6 +160,27 @@ public class ProducerApp2 {
             System.out.printf("Frame: %s Sent!\n", framePath);
         }
     
+
+        public static void fastPostFrameToBucket(AmazonS3 cos,String apikey,String bucketName, String frameName, String framePath) {
+           
+   
+
+            // Load file
+            File inputFile = new File(framePath);
+
+            // Create AsperaTransferManager for FASP upload
+            AsperaTransferManager asperaTransferMgr = new AsperaTransferManagerBuilder(apikey, cos).build();
+
+            // Upload test file and report progress
+            Future<AsperaTransaction> asperaTransactionFuture = asperaTransferMgr.upload(bucketName, inputFile,frameName);
+            try {
+                AsperaTransaction asperaTransaction = asperaTransactionFuture.get();
+            } catch(InterruptedException | ExecutionException e) {
+                e.printStackTrace();
+            }
+        }
+
+
         public static void getFrameFromBucket(AmazonS3 cos,String bucketName, String frameName, String framePath) {
             
             System.out.printf("Retrieving new Frame: %s\n", framePath);
