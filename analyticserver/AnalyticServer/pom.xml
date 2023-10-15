@@ -31,6 +31,11 @@
             <artifactId>opencv</artifactId>
             <version>4.5.1-1</version> 
         </dependency>
+        <dependency>
+            <groupId>com.ibm.cloud</groupId>
+            <artifactId>ibm-cos-sdk</artifactId>
+            <version>RELEASE</version> <!-- Replace with the latest version -->
+        </dependency>
         
     </dependencies>
 
