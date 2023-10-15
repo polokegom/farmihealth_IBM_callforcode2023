@@ -1,5 +1,6 @@
 package org.example;
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.util.Properties;
 import org.apache.kafka.clients.producer.*;
 import java.time.LocalDateTime;
@@ -11,12 +12,13 @@ import com.ibm.cloud.objectstorage.client.builder.AwsClientBuilder.EndpointConfi
 import com.ibm.cloud.objectstorage.services.s3.AmazonS3;
 import com.ibm.cloud.objectstorage.services.s3.AmazonS3ClientBuilder;
 import com.ibm.cloud.objectstorage.services.s3.model.Bucket;
+import com.ibm.cloud.objectstorage.services.s3.model.GetObjectRequest;
 import com.ibm.cloud.objectstorage.services.s3.model.ListObjectsRequest;
 import com.ibm.cloud.objectstorage.services.s3.model.ObjectListing;
+import com.ibm.cloud.objectstorage.services.s3.model.ObjectMetadata;
+import com.ibm.cloud.objectstorage.services.s3.model.PutObjectRequest;
 import com.ibm.cloud.objectstorage.services.s3.model.S3ObjectSummary;
 import com.ibm.cloud.objectstorage.oauth.BasicIBMOAuthCredentials;
-
-import java.io.File;
 
 
 
@@ -124,4 +126,22 @@ public class ProducerApp2 {
             }
             System.out.println();
         }
-    }
+    
+        public static void postFrameToBucket(AmazonS3 cos,String bucketName, String frameName, String framePath) {
+           
+            System.out.printf("Sending new frame: %s\n", framePath); 
+            cos.putObject(bucketName, frameName, new File(framePath) );
+            System.out.printf("Frame: %s Sent!\n", framePath);
+        }
+    
+        public static void getFrameFromBucket(AmazonS3 cos,String bucketName, String frameName, String framePath) {
+            
+            System.out.printf("Retrieving new Frame: %s\n", framePath);
+            GetObjectRequest request = new GetObjectRequest(bucketName,frameName);
+            cos.getObject( request,new File(frameName));
+            System.out.printf("Item: %s created!\n", framePath);
+        }
+    
+
+}
+
