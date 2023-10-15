@@ -7,7 +7,7 @@ import { GoogleMap } from '@angular/google-maps';
   styleUrls: ['./farm-map.component.css']
 })
 export class FarmMapComponent implements OnInit {
-  private map: google.maps.Map | undefined; ;
+  private map!: google.maps.Map ;
   private lassoSelecting: boolean = false;
   private lassoPolygon!: google.maps.Polygon ;
   private lassoCoordinates: google.maps.LatLng[] = [];
@@ -56,7 +56,7 @@ export class FarmMapComponent implements OnInit {
       map: this.map,
     });
 
-    google.maps.event.addListener(this.map!, 'mousemove', (event: google.maps.MapMouseEvent) => {
+    google.maps.event.addListener(this.map!, 'mousemove', (event: any) => {
       if (this.map && !this.lassoSelecting) {
         const latLng = event.latLng;
         if (latLng) {

@@ -67,8 +67,8 @@ public class ProducerApp2 {
         producer.close(); */
             String bucketName = "cropfield-datasets";  // eg my-unique-bucket-name
             String newBucketName = "<NEW_BUCKET_NAME>"; // eg my-other-unique-bucket-name
-            String apiKey = "hMqdLMCXisJpf6__QqFwHmzOA83nh0jm1Cc5GM0MuKLd"; // eg "W00YiRnLW4k3fTjMB-oiB-2ySfTrFBIQQWanc--P3byk"
-            String serviceInstanceId = "<crn:v1:bluemix:public:cloud-object-storage:global:a/e518d3d5e8654e068c4cd16497e85429:72985652-758d-49ab-926e-a0943b61a650:bucket:cropfield-datasets"; // eg "crn:v1:bluemix:public:cloud-object-storage:global:a/3bf0d9003abfb5d29761c3e97696b71c:d6f04d83-6c4f-4a62-a165-696756d63903::"
+            String apiKey = "PEYuSE5yyrTptcJyozd0npDqCoOQ1fEKZEXxmieTQgGs"; // eg "W00YiRnLW4k3fTjMB-oiB-2ySfTrFBIQQWanc--P3byk"
+            String serviceInstanceId = "crn:v1:bluemix:public:cloud-object-storage:global:a/e518d3d5e8654e068c4cd16497e85429:72985652-758d-49ab-926e-a0943b61a650::"; // eg "crn:v1:bluemix:public:cloud-object-storage:global:a/3bf0d9003abfb5d29761c3e97696b71c:d6f04d83-6c4f-4a62-a165-696756d63903::"
             String endpointUrl = "https://s3.us-south.cloud-object-storage.appdomain.cloud"; // this could be any service endpoint
 
             String storageClass = "us-south-standard";

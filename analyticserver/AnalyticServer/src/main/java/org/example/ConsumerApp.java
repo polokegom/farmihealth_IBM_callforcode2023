@@ -2,7 +2,7 @@ package org.example;
 
 
 
-public class Consumer {
+public class ConsumerApp {
 
     public static void main(String[] args) {
 

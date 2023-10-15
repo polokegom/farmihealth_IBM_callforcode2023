@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.util.Properties;
 import javax.imageio.ImageIO;
 
-public class Producer {
+public class ProducerApp {
     
     private static final String BOOTSTRAP_SERVERS = "localhost:9092";
     private static final String TOPIC = "live_video_topic";
@@ -26,7 +26,7 @@ public class Producer {
         producerProps.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, ByteArraySerializer.class.getName());
         producerProps.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, ByteArraySerializer.class.getName());
 
-        Producer<byte[], byte[]> producer = new KafkaProducer<>(producerProps);
+        org.apache.kafka.clients.producer.Producer<byte[], byte[]> producer = new KafkaProducer<>(producerProps);
 
         VideoCapture videoCapture = new VideoCapture(0); 
 
