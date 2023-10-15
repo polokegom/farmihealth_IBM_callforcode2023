@@ -91,7 +91,7 @@ public class ProducerApp2 {
             AmazonS3 cosClient = createClient(apiKey, serviceInstanceId, endpointUrl, location);
 
             /* 
-            //Issue with using IBM Aspera
+            //Issue with using IBMAspera
             AsperaConfig asperaConfig = new AsperaConfig()
             .withMultiSession(2)
             .withMultiSessionThresholdMb(100);
@@ -187,6 +187,12 @@ public class ProducerApp2 {
             GetObjectRequest request = new GetObjectRequest(bucketName,frameName);
             cos.getObject( request,new File(frameName));
             System.out.printf("Item: %s created!\n", framePath);
+        }
+
+        public static void deleteItem(AmazonS3 cos,String bucketName, String frameName) {
+            System.out.printf("Deleting item: %s\n", frameName);
+            cos.deleteObject(bucketName, frameName);
+            System.out.printf("Item: %s deleted!\n", frameName);
         }
     
 
