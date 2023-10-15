@@ -35,6 +35,28 @@ import com.ibm.cloud.objectstorage.oauth.TokenManager;
 
 public class ProducerApp2 {
      public static void main(String[] args) {
+
+
+                Properties props = new Properties();
+                props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092"); // Replace with your Kafka broker(s) address
+                props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.StringSerializer");
+                props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.StringSerializer");
+        
+                KafkaProducer<String, String> producer = new KafkaProducer<>(props);
+        
+                String topic = "polokegos-events"; // Replace with your topic name
+        
+                try {
+
+                    ProducerRecord<String, String> record = new ProducerRecord<>(topic,"{'lat':99.332,'lan':-3.266,'frameurl': 'https://th.bing.com/th/id/OIP.DuVbrwWSsTMRX3RK4DEPpwHaHa?pid=ImgDet&w=474&h=474&rs=1'}");
+                    producer.send(record);
+                    System.out.println("1st push");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    // Close the producer when you're done
+                    producer.close();
+                }
         /*
         // Configure the Kafka producer properties
         Properties producerProps = new Properties();
@@ -77,7 +99,7 @@ public class ProducerApp2 {
         }
 
         // Close the Kafka producer
-        producer.close(); */
+        producer.close(); 
             String bucketName = "cropfield-datasets";  // eg my-unique-bucket-name
             String newBucketName = "polokge.hackathon.gmail.com-cropfield-datasets"; // eg my-other-unique-bucket-name
             String apiKey = "fTC7hYTL76WqaCEs11cHJx1wK7ZxvE_qB1jrIlKTmdJ0"; // eg "W00YiRnLW4k3fTjMB-oiB-2ySfTrFBIQQWanc--P3byk"
@@ -89,7 +111,7 @@ public class ProducerApp2 {
 
             System.out.println("Current time: " + LocalDateTime.now());
             AmazonS3 cosClient = createClient(apiKey, serviceInstanceId, endpointUrl, location);
-
+*/
             /* 
             //Issue with using IBMAspera
             AsperaConfig asperaConfig = new AsperaConfig()
@@ -104,9 +126,9 @@ public class ProducerApp2 {
             */
 
 
-            listObjects(cosClient, bucketName);
+            //listObjects(cosClient, bucketName);
             //createBucket(cosClient, newBucketName);
-            listBuckets(cosClient);
+            //listBuckets(cosClient);
 
         }
 
