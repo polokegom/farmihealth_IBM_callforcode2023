@@ -67,37 +67,6 @@ public class ProducerApp2 {
         Producer<String, byte[]> producer = new KafkaProducer<>(producerProps);
 
   
-
-        File folder = new File("/home/polokego/Desktop/farmihealth_IBM_callforcode2023/analyticserver/AnalyticServer/src/main/resources/farm1.jpeg\"");
-        File[] files = folder.listFiles();
-
-        if (files != null) {
-            for (File file : files) {
-                if (file.isFile()) {
-                    try {
-                        FileInputStream fileInputStream = new FileInputStream(file);
-                        byte[] imageBytes = new byte[(int) file.length()];
-
-                        if (fileInputStream.read(imageBytes) > 0) {
-                            // Send the image as a message to the Kafka topic
-                            ProducerRecord<String, byte[]> record = new ProducerRecord<>("mapdataset", file.getName(), imageBytes);
-                            producer.send(record, (metadata, exception) -> {
-                                if (exception == null) {
-                                    System.out.println("Image " + file.getName() + " sent successfully. Offset: " + metadata.offset());
-                                } else {
-                                    System.err.println("Error sending image: " + exception.getMessage());
-                                }
-                            });
-                        }
-
-                        fileInputStream.close();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        }
-
         // Close the Kafka producer
         producer.close(); 
             String bucketName = "cropfield-datasets";  // eg my-unique-bucket-name
@@ -112,19 +81,6 @@ public class ProducerApp2 {
             System.out.println("Current time: " + LocalDateTime.now());
             AmazonS3 cosClient = createClient(apiKey, serviceInstanceId, endpointUrl, location);
 */
-            /* 
-            //Issue with using IBMAspera
-            AsperaConfig asperaConfig = new AsperaConfig()
-            .withMultiSession(2)
-            .withMultiSessionThresholdMb(100);
-
-            TokenManager tokenManager = new DefaultTokenManager(new DelegateTokenProvider(apiKey));
-            
-            AsperaTransferManager asperaTransferMgr = new AsperaTransferManagerBuilder(apiKey, cosClient)
-                .withAsperaConfig(asperaConfig)
-                .build();
-            */
-
 
             //listObjects(cosClient, bucketName);
             //createBucket(cosClient, newBucketName);

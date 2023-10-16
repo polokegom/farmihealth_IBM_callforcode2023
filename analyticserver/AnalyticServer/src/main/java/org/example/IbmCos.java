@@ -32,10 +32,22 @@ public class IbmCos {
     private String apiKey = "fTC7hYTL76WqaCEs11cHJx1wK7ZxvE_qB1jrIlKTmdJ0";
     private String serviceInstanceId = "crn:v1:bluemix:public:cloud-object-storage:global:a/e518d3d5e8654e068c4cd16497e85429:72985652-758d-49ab-926e-a0943b61a650::";
     private String endpointUrl = "https://s3.us-south.cloud-object-storage.appdomain.cloud";
-    private String location = "us";
+    private static String location = "us";
 
     public IbmCos() {
         //AmazonS3 cosClient = createClient(apiKey, serviceInstanceId, endpointUrl);
+            /* 
+            //Issue with using IBMAspera
+            AsperaConfig asperaConfig = new AsperaConfig()
+            .withMultiSession(2)
+            .withMultiSessionThresholdMb(100);
+
+            TokenManager tokenManager = new DefaultTokenManager(new DelegateTokenProvider(apiKey));
+            
+            AsperaTransferManager asperaTransferMgr = new AsperaTransferManagerBuilder(apiKey, cosClient)
+                .withAsperaConfig(asperaConfig)
+                .build();
+            */
 
     }
 
