@@ -38,23 +38,25 @@ public class ProducerApp2 {
 
 
                 Properties props = new Properties();
-                props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092"); // Replace with your Kafka broker(s) address
+                props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092"); 
                 props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.StringSerializer");
                 props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.StringSerializer");
         
                 KafkaProducer<String, String> producer = new KafkaProducer<>(props);
         
-                String topic = "polokegos-events"; // Replace with your topic name
+                String topic = "polokegos-events"; 
         
                 try {
 
                     ProducerRecord<String, String> record = new ProducerRecord<>(topic,"{'lat':89.332,'lan':-300.266,'frameurl': 'https://th.bing.com/th/id/OIP.DuVbrwWSsTMRX3RK4DEPpwHaHa?pid=ImgDet&w=474&h=474&rs=1'}");
                     producer.send(record);
+                    record = new ProducerRecord<>(topic,"{'lat':87.352,'lan':-82.266,'frameurl': 'https://th.bing.com/th/id/OIP.aoYL-f_t7yRdCsJrePSgPAHaEK?pid=ImgDet&rs=1'}");
+
+                    producer.send(record);
                     System.out.println("1st push");
                 } catch (Exception e) {
                     e.printStackTrace();
                 } finally {
-                    // Close the producer when you're done
                     producer.close();
                 }
         /*
