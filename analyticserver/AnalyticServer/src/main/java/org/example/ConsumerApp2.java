@@ -22,8 +22,8 @@ public class ConsumerApp2 {
         Properties props = new Properties();
         props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092"); // Replace with your Kafka broker(s) address
         props.put(ConsumerConfig.GROUP_ID_CONFIG, "test-consumer-group"); // Consumer group ID
-        props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
-        props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
+        props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG,"org.apache.kafka.common.serialization.StringDeserializer");
+        props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.StringDeserializer");
 
         // Create a Kafka consumer instance
         try (KafkaConsumer<String, String> consumer = new KafkaConsumer<>(props)){
@@ -33,7 +33,7 @@ public class ConsumerApp2 {
 
         try {
                 // Poll for records
-                ConsumerRecords<String, String> records = consumer.poll(1000L);
+                ConsumerRecords<String, String> records = consumer.poll(Duration.ofSeconds(15));
                         System.out.println("^^^6^^^^^^^^^^^^^^^" + records.count());
 
                 for (ConsumerRecord<String, String> record : records) {

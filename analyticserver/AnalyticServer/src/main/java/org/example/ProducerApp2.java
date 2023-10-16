@@ -48,7 +48,7 @@ public class ProducerApp2 {
         
                 try {
 
-                    ProducerRecord<String, String> record = new ProducerRecord<>(topic,"{'lat':99.332,'lan':-3.266,'frameurl': 'https://th.bing.com/th/id/OIP.DuVbrwWSsTMRX3RK4DEPpwHaHa?pid=ImgDet&w=474&h=474&rs=1'}");
+                    ProducerRecord<String, String> record = new ProducerRecord<>(topic,"{'lat':89.332,'lan':-300.266,'frameurl': 'https://th.bing.com/th/id/OIP.DuVbrwWSsTMRX3RK4DEPpwHaHa?pid=ImgDet&w=474&h=474&rs=1'}");
                     producer.send(record);
                     System.out.println("1st push");
                 } catch (Exception e) {
