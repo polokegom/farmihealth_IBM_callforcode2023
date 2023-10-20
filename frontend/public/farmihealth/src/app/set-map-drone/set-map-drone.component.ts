@@ -3,6 +3,7 @@ import { Tween, update, Easing, remove } from '@tweenjs/tween.js';
 import { delay } from 'rxjs';
 import * as d3 from 'd3';
 import { Width } from 'ngx-owl-carousel-o/lib/services/carousel.service';
+import { GlobVarService } from '../glob-var.service';
 
 
 
@@ -46,15 +47,28 @@ export class SetMapDroneComponent {
   selector: any;
   static?: boolean | undefined;
   drawOnMapEvent: any;
+  userLat: any;
+  userLon: any;
+  page1: boolean = true;
+  page2: boolean = false;
+  page3: boolean = false;
 
 
 
-  constructor() {
-   }
+  constructor(private globVarService: GlobVarService) {
+
+    this.userLat = globVarService.userLat;
+    this.userLon = globVarService.userLon;
+    this.page1 = globVarService.pageSetFarmMap1;
+    this.page2 = globVarService.pageSetFarmMap2;
+    this.page3 = globVarService.pageSetFarmMap3;
+
+  }
   
   
 
   ngOnInit(): void {
+
 
       const script = document.createElement('script');
         script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyAWliISHIJ4PnZ73U5BQ2W9GN1_YxTuWOg&callback=initMap`;
@@ -64,8 +78,8 @@ export class SetMapDroneComponent {
           const cameraOptions: google.maps.CameraOptions = {
             tilt: 0,
             heading: 0,
-            zoom: 18,
-            center: { lat: 35.6594945, lng: 139.6999859 },
+            zoom: 14,
+            center: { lat: this.userLat, lng: this.userLon },
           };
       
           const mapOptions = {
@@ -75,7 +89,7 @@ export class SetMapDroneComponent {
             mapTypeControl: false, 
             streetViewControl: false,
             mapTypeId: google.maps.MapTypeId.SATELLITE,
-            minZoom: 16,/*
+            minZoom: 13,/*
             restriction: {
               latLngBounds: this.NEW_ZEALAND_BOUNDS,
               strictBounds: false,

@@ -29,6 +29,9 @@ import { MaintenanceComponent } from './maintenance/maintenance.component';
 import { ViewDroneStatusComponent } from './view-drone-status/view-drone-status.component';
 import { RouterModule } from '@angular/router';
 import { TestComponentComponent } from './test-component/test-component.component';
+import { SetMapDroneComponent } from './set-map-drone/set-map-drone.component';
+import { LinkDroneToMapComponent } from './link-drone-to-map/link-drone-to-map.component';
+import { SetDroneScanTimeComponent } from './set-drone-scan-time/set-drone-scan-time.component';
 
 
 @NgModule({
@@ -46,7 +49,7 @@ import { TestComponentComponent } from './test-component/test-component.componen
     FarmMapComponent,
     TestCodeComponent,
     TestCodeMapComponent,
-
+    SetMapDroneComponent,
     TestPolyComponent,
     ViewScheduleListComponent,
     ViewMapListComponent,
@@ -55,7 +58,9 @@ import { TestComponentComponent } from './test-component/test-component.componen
     ConfigMapDroneComponent,
     MaintenanceComponent,
     ViewDroneStatusComponent,
-    TestComponentComponent
+    TestComponentComponent,
+    LinkDroneToMapComponent,
+    SetDroneScanTimeComponent,
   ],
   imports: [
     BrowserModule,

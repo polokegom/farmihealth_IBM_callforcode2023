@@ -11,16 +11,23 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ViewMapListComponent } from './view-map-list/view-map-list.component';
 import { ViewScheduleListComponent } from './view-schedule-list/view-schedule-list.component';
+import { SetMapNameComponent } from './set-map-name/set-map-name.component';
+import { AddDroneComponent } from './add-drone/add-drone.component';
 
 const routes: Routes = [
 
   {path: '',component:HomepageComponent},
   {path: 'menu',component:MenulistComponent},
   {path: 'maps',component:SetMapDroneComponent},
+  {path: 'maps/name',component:SetMapNameComponent},
+  {path: 'maps/drone',component:SetMapNameComponent},
   {path: 'farmhealth/status',component:ViewCropHealthComponent},
   {path: 'farmhealth/map',component:ViewMapListComponent},
   {path: 'farmhealth/schedule',component:ViewScheduleListComponent},
   {path: 'drone',component:ViewDroneListComponent},
+  {path: 'drone/newdrone',component:AddDroneComponent},
+  {path: 'drone/status',component:ViewDroneStatusComponent},
+
   {path: 'settings', component:SettingsComponent},
   {path: 'login',  component:LoginComponent},
   {path: 'register', component:RegisterComponent},
