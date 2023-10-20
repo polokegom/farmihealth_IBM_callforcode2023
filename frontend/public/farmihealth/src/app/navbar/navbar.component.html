@@ -1,15 +1,17 @@
 
-<nav class="navbar-skeleton">
+<nav class="navbar-skeleton">            
+        <img  mat-button [matMenuTriggerFor]="menu" id="logo" src="../../assets/language_ico.png">
 
+        <ul  id="navbar-right-items">
+            <a routerLink="/login"><li>LOGIN</li></a>
+            <a routerLink="/register"><li>REGISTER</li></a>
+        </ul> 
     
-    <ul id="navbar-right-items">
-        <li >
-            <span>LOGIN</span>
-        </li> 
-        <li>
-            <span>REGISTER</span>
-        </li> 
-
-    </ul>
- 
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item>English</button>
+            <button mat-menu-item>Française</button>
+            <button mat-menu-item>日本語</button>
+            <button mat-menu-item>Español</button>
+        
+        </mat-menu>
 </nav>

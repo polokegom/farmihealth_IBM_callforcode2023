@@ -2,7 +2,7 @@
   
     position: relative;
     left: 50%;
-    margin-top: 40px;
+    margin-top: 60px;
     margin-bottom: 20px;
     transform: translateX(-50%);
     display: flex;
@@ -14,16 +14,42 @@
     height: 300px;
 }
   
-  
+#exit {
+  display:flex;
+  position: relative;
+  height:30px;
 
+  font-weight: bold;
+  margin-left: 100px;
+}
+
+#title {
+  margin-left:120px;
+  width:80px;
+  font-weight: bold;
+
+  align-items: center;
+  font-size: 1.4rem;
+  color: #3b3a3a;
+}
+
+#headers {
+    display: flex;
+    justify-content:space-between;
+}
   
   .winLogin {
     display: flex;
+    
     flex-direction: column;
     align-items: center;
     margin-top: 2.9rem;
   }
-  
+    
+  #exit:hover {
+    cursor: pointer;
+  }
+
   .winLogin input {
     width: 12rem;
     height: 1.7rem;

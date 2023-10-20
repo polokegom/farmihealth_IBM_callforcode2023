@@ -1,7 +1,9 @@
 <div id="base">
     
-    <span style="font-weight: bold; font-size: 1.2rem;color: #3b3a3a;
-    ">Create An Account:</span>
+    <div id="headers">
+      <span id="title">Create An Account:</span>
+      <a routerLink=""><img id="exit" src="../../assets/img/cross2.png"></a>
+    </div>
     <form class="winRegister">
       <span style="font-size: 12px;margin-right:165px; color:gray">Email:</span>
       <input type="text" class="form-register-input" placeholder=""/>
@@ -15,7 +17,7 @@
       <span style="margin-top:5px;font-size: 12px;margin-right:145px; color:gray">Password:</span>
       <input type="password" class="form-register-input" />
       
-      <input type="button" class="form-register-btn" value="Sign Up" />
+      <a routerLink="/menu"><input type="button" class="form-register-btn" value="Sign Up" /></a>
     </form>
   
   </div>

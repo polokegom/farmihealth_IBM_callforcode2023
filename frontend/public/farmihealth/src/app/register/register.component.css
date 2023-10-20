@@ -1,7 +1,7 @@
 #base {
     position: relative;
     left: 50%;
-    margin-top: 40px;
+    margin-top: 60px;
     margin-bottom: 20px;
     transform: translateX(-50%);
     display: flex;
@@ -10,10 +10,37 @@
     border: 0.1rem solid #cfcfcf;
     padding: 3rem;
     width: 300px;
-    height: 400px;
+    height: 420px;
 }
   
-  
+#exit {
+  display:flex;
+  position: relative;
+  height:30px;
+
+  font-weight: bold;
+  margin-left: 30px;
+}
+
+#title {
+  margin-left:60px;
+  font-weight: bold;
+
+  width:220px;
+  align-items: center;
+  font-size: 1.4rem;
+  color: #3b3a3a;
+}
+
+#headers {
+    display: flex;
+    justify-content:space-between;
+}
+
+    
+#exit:hover {
+  cursor: pointer;
+}
 
   
   .winRegister {

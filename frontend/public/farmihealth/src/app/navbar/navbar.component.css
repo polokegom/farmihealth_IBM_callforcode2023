@@ -8,43 +8,154 @@ nav{
 .navbar-skeleton {
     margin: 0px;
     padding:0px;
+    width:100%;
     z-index: 100;
-    height:55px;
+    height:70px;
     background-color: aliceblues;
     border-bottom: 1px solid;
     border-color: lightgray;
-    box-shadow: 0 10px 10px rgba(146, 161, 176, 0.15);
+    box-shadow: 2px;
+    display: flex;
+    justify-content: space-between;
+   /* box-shadow: 0 10px 10px rgba(146, 161, 176, 0.15);*/
 
 }
 
+@font-face {
+
+    font-family: 'logofont';
+    src: url('../../assets/LemonDays.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  
+}
+
+#logo {
+    padding: 0px;
+    margin-top: 20px;
+    margin-left: 24px;
+    top:0px;
+    display: flex;
+    font-size: 22px;
+    
+    font-family: 'logofont', sans-serif;
+    color: rgb(96, 97, 94);
+
+}
+
+#logo:hover {
+    padding-bottom: 5px;
+    border-bottom: 2px solid rgb(97, 169, 187);
+/**/
+}
+
+
+img {
+
+    width: 40px;
+    height: 36px;
+
+}
 
 
 
 .navbar-skeleton ul li:hover {
-    
-    text-decoration: underline;
+   
+    /*text-decoration: underline;*/
     cursor: pointer;
     color: rgb(97, 169, 187);
 }
 
-
-.navbar-skeleton ul li {
+.navbar-skeleton #logo:hover {
     
-    margin-right:50px;  
     cursor: pointer;
+    color: rgb(43, 44, 44);
 }
 
+
+
+.navbar-skeleton{
+    
+    margin-right:50px;  
+
+}
+    
+
+
+ul  {
+
+    
+    list-style: none;
+    display: flex;
+  margin-top: 30px; 
+
+}
+
+ul li {
+       
+    margin-right:20px;
+}
+
+div {
+
+    margin-top: 30px;    
+}
+
+div #navbar-right-items {
+    margin-top: 27px; 
+}
 
 #navbar-right-items {
 
-    display: flex;
-    position: relative;
-    font-size: 18x;
+
+    font-size: 18px;
     font-weight: bold;
     color: rgb(95, 94, 94);
-    text-decoration: none;
-    justify-content:right;
     list-style-type: none;
-    margin-top:40px;
     margin-right:20px;
+
 }
+.example-menu {
+    display: inline-flex;
+    flex-direction: column;
+    min-width: 180px;
+    max-width: 280px;
+    background-color: rgba(255, 255, 255);
+    padding: 6px 0;
+  }
+  
+  .example-menu-item,
+  .example-standalone-trigger {
+    background-color: transparent;
+    cursor: pointer;
+    border: none;
+  
+    user-select: none;
+    min-width: 64px;
+    line-height: 36px;
+    padding: 0 16px;
+  
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    flex: 1;
+  }
+  
+  .example-menu-item:hover {
+    background-color: rgb(208, 208, 208);
+  }
+  
+  .example-menu-item:active {
+    background-color: rgb(170, 170, 170);
+  }
+  
+  .example-standalone-item {
+    background-color: rgb(239, 239, 239);
+  }
+  .example-standalone-item:hover {
+    background-color: rgb(208, 208, 208);
+  }
+  .example-standalone-item[aria-expanded='true'] {
+    background-color: rgb(208, 208, 208);
+  }
+  

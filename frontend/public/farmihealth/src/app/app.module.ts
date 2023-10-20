@@ -15,6 +15,7 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { AddDroneComponent } from './add-drone/add-drone.component';
 import { FarmMapComponent } from './farm-map/farm-map.component';
 import {GoogleMapsModule} from '@angular/google-maps';
+import { MatMenuModule } from '@angular/material/menu';
 import { TestCodeComponent } from './test-code/test-code.component';
 import { TestCodeMapComponent } from './test-code-map/test-code-map.component';
 import { TestPolyComponent } from './test-poly/test-poly.component';
@@ -26,6 +27,7 @@ import { SetMapNameComponent } from './set-map-name/set-map-name.component';
 import { ConfigMapDroneComponent } from './config-map-drone/config-map-drone.component';
 import { MaintenanceComponent } from './maintenance/maintenance.component';
 import { ViewDroneStatusComponent } from './view-drone-status/view-drone-status.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -57,6 +59,8 @@ import { ViewDroneStatusComponent } from './view-drone-status/view-drone-status.
     BrowserModule,
     GoogleMapsModule,
     AppRoutingModule,
+    RouterModule,
+    MatMenuModule,
     BrowserAnimationsModule
   ],
   providers: [],

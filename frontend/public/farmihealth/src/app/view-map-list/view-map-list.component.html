@@ -1,14 +1,6 @@
 <div  style="display: flex; justify-content: center;align-items: center;  flex-direction: column;">
     <input id="search" type="text" placeholder="Search Map">
     <ul>
-
-
-        <li >farm map 1</li>
-        <li>farm map 2</li>
-        <li>farm map 3</li>
-        <li>farm map 4</li>
-        <li>farm map 5</li>
-        <li>farm map 6</li>
-
+        <a routerLink="/farmhealth/schedule"><li *ngFor="let farm of listOfFarms;">{{farm}}</li></a>
     </ul>
 </div>

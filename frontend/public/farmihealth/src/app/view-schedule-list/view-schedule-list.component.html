@@ -1,14 +1,7 @@
 <div  style="display: flex; justify-content: center;align-items: center;  flex-direction: column;">
     <input id="search" type="text" placeholder="Search Date Of Report">
     <ul>
-         
-
-        <li>1st October, 2023</li>
-        <li>30th September, 2023</li>
-        <li>29th September, 2023</li>
-        <li>28th September, 2023</li>
-        <li>27th September, 2023</li>
-        <li>26th September, 2023</li>
-
+        <a routerLink="farmhealth/status"><li *ngFor="let date of strListOfDates;">{{date}}</li></a>
+        
     </ul>
 </div>

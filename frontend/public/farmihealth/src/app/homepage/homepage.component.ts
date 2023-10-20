@@ -7,4 +7,22 @@ import { Component } from '@angular/core';
 })
 export class HomepageComponent {
 
+  /*
+  showLoginPage: boolean = false;
+  showRegisterPage: boolean = false;
+
+
+  routeToLogin(): void {
+
+    this.showLoginPage = true;
+
+  }
+
+  routeToRegister(): void {
+
+    this.showRegisterPage = true;
+
+    
+  }
+*/
 }

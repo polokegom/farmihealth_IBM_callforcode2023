@@ -1,7 +1,8 @@
-import { Component, OnInit,  AfterViewInit, ViewChild, ElementRef} from '@angular/core';
+import { Component, OnInit,  AfterViewInit, ViewChild, ElementRef, HostListener} from '@angular/core';
 import { Tween, update, Easing, remove } from '@tweenjs/tween.js';
 import { delay } from 'rxjs';
 import * as d3 from 'd3';
+import { Width } from 'ngx-owl-carousel-o/lib/services/carousel.service';
 
 
 
@@ -18,7 +19,7 @@ import * as d3 from 'd3';
 
 export class TestCodeMapComponent implements OnInit, AfterViewInit, ViewChild{
   @ViewChild('svgContainer', { static: true }) svgContainer!: ElementRef;
-
+  @ViewChild('resizeDiv') resizable!: ElementRef;
   mapIsLoading: Boolean = true;
    svg: any; // Reference to the created SVG
   NEW_ZEALAND_BOUNDS = {
@@ -33,12 +34,12 @@ export class TestCodeMapComponent implements OnInit, AfterViewInit, ViewChild{
 
   private dragging = false;
   private drawing = false;
+  private hasFarmBeenDrawn = false;
   private makePolygon = false; 
   private startPoint!: [number, number];
   private points: [number, number][] = [];
   private g: any;
   private dragger: any;
-  constructor() { }
   descendants!: boolean;
   emitDistinctChangesOnly!: boolean;
   first!: boolean;
@@ -47,6 +48,13 @@ export class TestCodeMapComponent implements OnInit, AfterViewInit, ViewChild{
   selector: any;
   static?: boolean | undefined;
   drawOnMapEvent: any;
+
+
+
+  constructor() {
+   }
+  
+  
 
   ngOnInit(): void {
 
@@ -83,7 +91,13 @@ export class TestCodeMapComponent implements OnInit, AfterViewInit, ViewChild{
     
   }
 
- 
+  @HostListener('window:resize', ['$event'])
+  onResize(event: Event): void {
+    //this.resizable.nativeElement.style.height = window.innerHeight - 260 + 'px';
+  }
+
+
+
   initMap(cameraOptions:any, mapOptions: any): void {
  
 
@@ -158,7 +172,7 @@ export class TestCodeMapComponent implements OnInit, AfterViewInit, ViewChild{
     btnBack.style.width = '70px';
     btnBack.style.zIndex = "40"
 
-    btnBack.style.margin = '8px 0 22px';
+    btnBack.style.margin = '14px 0 22px';
     btnBack.style.marginLeft = '10px';
    // btnBack.style.padding = '0 5px';
 
@@ -175,7 +189,7 @@ export class TestCodeMapComponent implements OnInit, AfterViewInit, ViewChild{
     btnSelect.style.fontFamily = 'Roboto,Arial,sans-serif';
     btnSelect.style.fontSize = '16px';
     btnSelect.style.lineHeight = '38px';
-    btnSelect.style.margin = '8px 0 22px';
+    btnSelect.style.margin = '14px 0 22px';
     btnSelect.style.marginBottom = '8px';
     btnSelect.style.padding = '0 5px';
     btnSelect.style.width = '220px';
@@ -238,7 +252,7 @@ export class TestCodeMapComponent implements OnInit, AfterViewInit, ViewChild{
           svgContainer.style.display = "none";
           svg.selectAll('*').remove();
           btnSelect.textContent = 'Select Drone Area';
-          
+          this.hasFarmBeenDrawn = false
           btnContinue.style.color = "white";
           btnContinue.style.backgroundColor = "#6a6b6b";
           btnContinue.style.border = "1px solid #e3e4e6";
@@ -297,7 +311,9 @@ export class TestCodeMapComponent implements OnInit, AfterViewInit, ViewChild{
       });
 
     svg.on('mouseup', () => {
+
       if (this.dragging) return;
+      if (this.hasFarmBeenDrawn) return;
       this.drawing = true;
       const [x, y] = d3.mouse(svgContainer);
       this.startPoint = [x, y];
@@ -338,7 +354,7 @@ export class TestCodeMapComponent implements OnInit, AfterViewInit, ViewChild{
         .attr('stroke', '#2c2d2e')
         .attr('stroke-width', 2);;
     });
-
+    
 
   }
   
@@ -374,7 +390,7 @@ export class TestCodeMapComponent implements OnInit, AfterViewInit, ViewChild{
 
     this.points.splice(0);
     this.drawing = false;
-  
+    this.hasFarmBeenDrawn = true
   }
 
 

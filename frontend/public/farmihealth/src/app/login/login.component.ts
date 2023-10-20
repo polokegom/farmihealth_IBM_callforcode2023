@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter, OnInit  } from '@angular/core';
+import { Component, Output, EventEmitter, OnInit, Input } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 
 @Component({
@@ -7,7 +7,7 @@ import {HttpClient} from '@angular/common/http';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-
-  constructor(){}
+  constructor(){
+  }
  
 }

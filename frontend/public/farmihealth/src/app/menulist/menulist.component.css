@@ -9,6 +9,7 @@
     margin-top:40px;
 }
 
+
 .horizontal li {
     border: 0.1rem solid #b9b9b9;
     cursor: pointer;
@@ -42,6 +43,7 @@
     border-radius: 0.3rem;
 
 }
+
 
 
 .horizontal li span{

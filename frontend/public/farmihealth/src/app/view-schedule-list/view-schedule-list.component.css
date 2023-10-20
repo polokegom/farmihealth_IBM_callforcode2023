@@ -1,6 +1,6 @@
 #search {
 
-    margin-top: 90px;
+    margin-top: 0px;
     width: 375px;
     height: 40px;
     border-radius: 10px;;
@@ -51,6 +51,7 @@ ul li {
 
 div {
     background-color: rgb(245, 245, 245);
+    height:100%
 }
 
 ul li:hover {
