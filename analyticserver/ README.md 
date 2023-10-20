@@ -1,0 +1,6 @@
+#Analytics-Engine
+
+This was an Apache Kafka Streams application launched on IBM VM VPC
+to load and proccess the streams of images produces by the drone using the successfully deployed IBM Watson ML model on Weed detection
+
+Following the  ingestion and processing of the unstructured data, Kafka Streams then continues to write to new topics associated with the farm that the drone processed the data from. 

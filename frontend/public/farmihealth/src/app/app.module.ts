@@ -28,6 +28,7 @@ import { ConfigMapDroneComponent } from './config-map-drone/config-map-drone.com
 import { MaintenanceComponent } from './maintenance/maintenance.component';
 import { ViewDroneStatusComponent } from './view-drone-status/view-drone-status.component';
 import { RouterModule } from '@angular/router';
+import { TestComponentComponent } from './test-component/test-component.component';
 
 
 @NgModule({
@@ -53,7 +54,8 @@ import { RouterModule } from '@angular/router';
     SetMapNameComponent,
     ConfigMapDroneComponent,
     MaintenanceComponent,
-    ViewDroneStatusComponent
+    ViewDroneStatusComponent,
+    TestComponentComponent
   ],
   imports: [
     BrowserModule,
