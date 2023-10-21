@@ -10,7 +10,7 @@ export class ViewScheduleListComponent implements OnInit {
   listOfDates: Set<Date> = new Set<Date>();
   strListOfDates: String[] = []
   ngOnInit(): void {
-
+    alert("--------")
     this.listOfDates.add(new Date("2023-10-09T14:00:04"));
     this.listOfDates.add(new Date("2023-10-06T14:00:04"));
     this.listOfDates.add(new Date("2023-10-08T14:00:04"));

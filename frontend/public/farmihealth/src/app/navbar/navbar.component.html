@@ -3,8 +3,10 @@
         <img  mat-button [matMenuTriggerFor]="menu" id="logo" src="../../assets/language_ico.png">
 
         <ul  id="navbar-right-items">
-            <a routerLink="/login"><li>LOGIN</li></a>
-            <a routerLink="/register"><li>REGISTER</li></a>
+            <li (click)="loginFunc()" [style.display]="loggedinStatus()? 'none':'block'">LOGIN</li>
+            <li (click)="regFunc()" [style.display]="loggedinStatus()? 'none':'block'">REGISTER</li>
+            <!--<a routerLink="" [style.display]="!loggedinStatus()? 'none':'block'"><li>SignOut</li></a>
+            -->
         </ul> 
     
         <mat-menu #menu="matMenu">

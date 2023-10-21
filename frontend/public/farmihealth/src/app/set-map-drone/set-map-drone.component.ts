@@ -4,7 +4,7 @@ import { delay } from 'rxjs';
 import * as d3 from 'd3';
 import { Width } from 'ngx-owl-carousel-o/lib/services/carousel.service';
 import { GlobVarService } from '../glob-var.service';
-
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -21,7 +21,7 @@ export class SetMapDroneComponent {
   @ViewChild('resizeDiv') resizable!: ElementRef;
   mapIsLoading: Boolean = true;
    svg: any; // Reference to the created SVG
-  NEW_ZEALAND_BOUNDS = {
+  LONDON_BOUNDS = {
     north: -34.36,
     south: -47.35,
     west: 166.28,
@@ -49,19 +49,13 @@ export class SetMapDroneComponent {
   drawOnMapEvent: any;
   userLat: any;
   userLon: any;
-  page1: boolean = true;
-  page2: boolean = false;
-  page3: boolean = false;
 
 
 
-  constructor(private globVarService: GlobVarService) {
+  constructor(private globVarService: GlobVarService, private router: Router) {
 
     this.userLat = globVarService.userLat;
     this.userLon = globVarService.userLon;
-    this.page1 = globVarService.pageSetFarmMap1;
-    this.page2 = globVarService.pageSetFarmMap2;
-    this.page3 = globVarService.pageSetFarmMap3;
 
   }
   
@@ -234,7 +228,7 @@ export class SetMapDroneComponent {
     btnContinue.style.color = "white";
     btnContinue.style.backgroundColor = "#797a7a";
     btnContinue.style.width = '150px';
-    btnContinue.disabled = true;
+   //s btnContinue.disabled = true;
     btnContinue.style.zIndex = "40"
 
 
@@ -295,6 +289,16 @@ export class SetMapDroneComponent {
       if (this.makePolygon)
           btnContinue.style.backgroundColor = 'lightgrey'
     
+    });
+
+    btnContinue.addEventListener('click',()=> {
+
+
+      if (this.hasFarmBeenDrawn) {
+        this.router.navigate(['/maps/name']);
+      
+      }
+
     });
 
     btnContinue.addEventListener('mouseleave', ()=> {
