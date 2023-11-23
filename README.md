@@ -1,9 +1,9 @@
-# FarmiHealth:
+# Introduction:
 This is a project build for "IBM - Call For Code" 2023 to 
-scan and access the health of a crop field using an autonomous drone to mitigate crop loss due to pests, disease and weed and providing a more sustainable agricultural future.
+scan and access the health of a crop field using an autonomous drone to mitigate declining crop yields due to pests, disease and weeds Thus building a more sustainable agricultural sector.
 
 
-# Live Video Demo:
+# Video Demo:
 [![Alt text](doc/imgs/farmihealth_poster.jpeg)](https://www.youtube.com/watch?v=1RL2KJs96NM)
 
 # Roadmap:
@@ -30,8 +30,7 @@ scan and access the health of a crop field using an autonomous drone to mitigate
 8. Docker used to modularise the execution of the software used for processing
 9. Kafka Streams (running on Java) is the application used to load and process all the arial footage produced by the drone camera using the deployed Yolo A.I. models
 10. IBM Watson ML is the ccloud platform used to host all the the applications ML models used for inference to determine whether any arial footages contains crops with pests, disease and weed.
-11. This is the Kafka Message Queue used to store the processed data stating the health of the crop field.
-
+11. Kafka Message Queue used to store the processed data containing the health of the crop field. This Queue will be read by the client application (1) using RxJS for near real-time data analysis.
 
 # References:
 
