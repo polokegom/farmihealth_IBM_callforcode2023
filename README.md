@@ -3,13 +3,13 @@ This is a project build for "IBM - Call For Code" 2023 to
 scan and access the health of a crop field using an autonomous drone to mitigate crop loss due to pests, disease and weed and providing a more sustainable agricultural future.
 
 
-# Live Video Demo
+# Live Video Demo:
 [![Alt text](doc/imgs/farmihealth_poster.jpeg)](https://www.youtube.com/watch?v=1RL2KJs96NM)
 
-# Roadmap
+# Roadmap:
 ![Alt Text](doc/imgs/farmihealth_roadmap.png)
 
-1.				2.
+1.
 2.				4.				
 3.				6.
 4.				8.
@@ -20,9 +20,9 @@ scan and access the health of a crop field using an autonomous drone to mitigate
 # Architecture:
 ![Alt Text](doc/imgs/farmihealth_architecture.png)
 
-1.				2.
-2.				4.				
-3.				6.
+1. Front-End platform used to scan and view the health of your crop field using the autonomous drone.
+2. IBM cloud service used to authenticate validate users of the app.				
+3. Autonomous drone used to scan the crop field using the pre-set details entered by the user (ex: Farm map)   
 4.				8.
 5.				10.
 6.				12.
