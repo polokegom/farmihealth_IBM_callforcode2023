@@ -3,7 +3,7 @@ This is an project build for "IBM - Call For Code" 2023 to scan and access the h
 
 
 # Youtube Video
-![Alt text](doc/imgs/farmihealth_roadmap.png)](https://www.youtube.com/watch?v=1RL2KJs96NM)
+![Alt text](doc/imgs/farmihealth_poster.jpeg)(https://www.youtube.com/watch?v=1RL2KJs96NM)
 
 # Roadmap
 ![Alt Text](doc/imgs/farmihealth_roadmap.png)
