@@ -29,7 +29,7 @@ scan and access the health of a crop field using an autonomous drone to mitigate
 
 # References:
 
-1. https://bsppjournals.onlinelibrary.wiley.com/doi/full/10.1111/j.1365-3059.2010.02411.x
-2. https://www.pnas.org/doi/10.1073/pnas.2022239118
-3. https://onehealthoutlook.biomedcentral.com/articles/10.1186/s42522-021-00038-7
+- https://bsppjournals.onlinelibrary.wiley.com/doi/full/10.1111/j.1365-3059.2010.02411.x
+- https://www.pnas.org/doi/10.1073/pnas.2022239118
+- https://onehealthoutlook.biomedcentral.com/articles/10.1186/s42522-021-00038-7
 
