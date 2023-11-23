@@ -3,21 +3,16 @@ This is a project build for "IBM - Call For Code" 2023 to
 scan and access the health of a crop field using an autonomous drone to mitigate declining crop yields due to pests, disease and weeds Thus building a more sustainable agricultural sector.
 
 
-# Video Demo:
-[![Alt text](doc/imgs/farmihealth_poster.jpeg)](https://www.youtube.com/watch?v=1RL2KJs96NM)
 
-# Roadmap:
+# Roadmap Of Solution:
 ![Alt Text](doc/imgs/farmihealth_roadmap.png)
 
-1.
-2.				4.				
-3.				6.
-4.				8.
-5.				10.
-6.				12.
 
 
-# Architecture:
+# Youtube Video:
+[![Alt text](doc/imgs/farmihealth_poster.jpeg)](https://www.youtube.com/watch?v=1RL2KJs96NM)
+
+# Dive Deep Into The Architecture:
 ![Alt Text](doc/imgs/farmihealth_architecture.png)
 
 1. Front-End platform used to scan and view the health of your crop field using the autonomous drone.
@@ -30,11 +25,11 @@ scan and access the health of a crop field using an autonomous drone to mitigate
 8. Docker used to modularise the execution of the software used for processing
 9. Kafka Streams (running on Java) is the application used to load and process all the arial footage produced by the drone camera using the deployed Yolo A.I. models
 10. IBM Watson ML is the ccloud platform used to host all the the applications ML models used for inference to determine whether any arial footages contains crops with pests, disease and weed.
-11. Kafka Message Queue used to store the processed data containing the health of the crop field. This Queue will be read by the client application (1) using RxJS for near real-time data analysis.
+11. Kafka Message Queue used to store the processed data containing the health of the crop field. This Queue will be read by the client application (1) using RxJS for near real-time data analytics.
 
 # References:
 
-https://bsppjournals.onlinelibrary.wiley.com/doi/full/10.1111/j.1365-3059.2010.02411.x
-https://www.pnas.org/doi/10.1073/pnas.2022239118
-https://onehealthoutlook.biomedcentral.com/articles/10.1186/s42522-021-00038-7
+1. https://bsppjournals.onlinelibrary.wiley.com/doi/full/10.1111/j.1365-3059.2010.02411.x
+2. https://www.pnas.org/doi/10.1073/pnas.2022239118
+3. https://onehealthoutlook.biomedcentral.com/articles/10.1186/s42522-021-00038-7
 
