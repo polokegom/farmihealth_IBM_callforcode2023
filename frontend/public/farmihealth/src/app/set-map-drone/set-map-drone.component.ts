@@ -72,8 +72,8 @@ export class SetMapDroneComponent {
           const cameraOptions: google.maps.CameraOptions = {
             tilt: 0,
             heading: 0,
-            zoom: 14,
-            center: { lat: this.userLat, lng: this.userLon },
+            zoom: 17,
+            center:  { lat: 37.0, lng: -95.713 },
           };
       
           const mapOptions = {
