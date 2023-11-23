@@ -1,15 +1,30 @@
 # FarmiHealth:
-This is an project build for "IBM - Call For Code" 2023 to scan and access the health of a crop field for pets, diseases and weed using an autonomous drone to address food insecurity by providing a more sustainable agricultural society.
+This is a project build for "IBM - Call For Code" 2023 to 
+scan and access the health of a crop field using an autonomous drone to mitigate crop loss due to pests, disease and weed and providing a more sustainable agricultural future.
 
 
 # Youtube Video
-![Alt text](doc/imgs/farmihealth_poster.jpeg)(https://www.youtube.com/watch?v=1RL2KJs96NM)
+[![Alt text](doc/imgs/farmihealth_poster.jpeg)](https://www.youtube.com/watch?v=1RL2KJs96NM)
 
 # Roadmap
 ![Alt Text](doc/imgs/farmihealth_roadmap.png)
 
+1.
+2.
+3.
+4.
+5.
+
+
 # Architecture:
 ![Alt Text](doc/imgs/farmihealth_architecture.png)
+
+1.				2.
+3.				4.				
+5.				6.
+7.				8.
+9.				10.
+11.				12.
 
 
 # References:
