@@ -5,7 +5,7 @@ scan and access the health of a crop field using an autonomous drone to mitigate
 
 
 # Roadmap Of Solution:
-![Alt Text](doc/imgs/farmihealth_roadmap.png)
+![Alt Text](doc/imgs/farmihealth_roadmap2.png)
 
 
 
