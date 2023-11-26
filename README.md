@@ -5,12 +5,12 @@ scan and access the health of a crop field using an autonomous drone to mitigate
 
 
 # Roadmap Of Solution:
-![Alt Text](doc/imgs/farmihealth_roadmap2.png)
+![Alt Text](doc/imgs/farmihealth_roadmap.png)
 
 
 
 # Youtube Video:
-[![Alt text](doc/imgs/farmihealth_poster.png)](https://www.youtube.com/watch?v=1RL2KJs96NM)
+[![Alt text](doc/imgs/farmihealth_poster2.png)](https://www.youtube.com/watch?v=1RL2KJs96NM)
 
 # Dive Deep Into The Architecture:
 ![Alt Text](doc/imgs/farmihealth_architecture.png)
