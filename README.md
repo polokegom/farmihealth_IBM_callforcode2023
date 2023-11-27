@@ -26,7 +26,7 @@ scan and access the health of a crop field using an autonomous drone to mitigate
 
 
 # Youtube Video:
-[![Alt text](doc/imgs/farmihealth_poster2.png)](https://www.youtube.com/watch?v=1RL2KJs96NM)
+[![Alt text](doc/imgs/farmihealth_poster3.png)](https://www.youtube.com/watch?v=1RL2KJs96NM)
 
 # References:
 
