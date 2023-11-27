@@ -8,10 +8,6 @@ scan and access the health of a crop field using an autonomous drone to mitigate
 ![Alt Text](doc/imgs/farmihealth_roadmap.png)
 
 
-
-# Youtube Video:
-[![Alt text](doc/imgs/farmihealth_poster2.png)](https://www.youtube.com/watch?v=1RL2KJs96NM)
-
 # Dive Deep Into The Architecture:
 ![Alt Text](doc/imgs/farmihealth_architecture.png)
 
@@ -26,6 +22,11 @@ scan and access the health of a crop field using an autonomous drone to mitigate
 9. Kafka Streams (running on Java) is the application used to load and process all the arial footage produced by the drone camera using the deployed Yolo A.I. models
 10. IBM Watson ML is the ccloud platform used to host all the the applications ML models used for inference to determine whether any arial footages contains crops with pests, disease and weed.
 11. Kafka Message Queue used to store the processed data containing the health of the crop field. This Queue will be read by the client application (1) using RxJS for near real-time data analytics.
+
+
+
+# Youtube Video:
+[![Alt text](doc/imgs/farmihealth_poster2.png)](https://www.youtube.com/watch?v=1RL2KJs96NM)
 
 # References:
 
