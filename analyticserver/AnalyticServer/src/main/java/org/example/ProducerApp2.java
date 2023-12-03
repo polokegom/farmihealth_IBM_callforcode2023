@@ -53,7 +53,7 @@ public class ProducerApp2 {
                     record = new ProducerRecord<>(topic,"{'lat':87.352,'lan':-82.266,'frameurl': 'https://th.bing.com/th/id/OIP.aoYL-f_t7yRdCsJrePSgPAHaEK?pid=ImgDet&rs=1'}");
 
                     producer.send(record);
-                    System.out.println("1st push");
+                    System.out.println("Notes: Kafka push successfully sent");
                 } catch (Exception e) {
                     e.printStackTrace();
                 } finally {

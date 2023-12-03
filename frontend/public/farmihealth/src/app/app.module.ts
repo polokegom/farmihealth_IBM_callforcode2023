@@ -32,6 +32,7 @@ import { TestComponentComponent } from './test-component/test-component.componen
 import { SetMapDroneComponent } from './set-map-drone/set-map-drone.component';
 import { LinkDroneToMapComponent } from './link-drone-to-map/link-drone-to-map.component';
 import { SetDroneScanTimeComponent } from './set-drone-scan-time/set-drone-scan-time.component';
+import { KafkaTestComponent } from './kafka-test/kafka-test.component';
 
 
 @NgModule({
@@ -61,6 +62,7 @@ import { SetDroneScanTimeComponent } from './set-drone-scan-time/set-drone-scan-
     TestComponentComponent,
     LinkDroneToMapComponent,
     SetDroneScanTimeComponent,
+    KafkaTestComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, Observer, Subject } from 'rxjs';
+import { KafkaClient, Consumer } from 'kafka-node';
+
 
 
 @Injectable({
@@ -8,5 +9,31 @@ import { Observable } from 'rxjs';
 })
 export class AnalyticsapiService {
 
-  constructor(http: HttpClient) { }
+  private kafkaClient: any;
+  private kafkaConsumer: any;
+
+  constructor() {
+    this.kafkaClient = new KafkaClient({ kafkaHost: 'localhost:9092' }); // Adjust with your Kafka broker details
+    this.kafkaConsumer = new Consumer(this.kafkaClient, [{ topic: 'polokegos-event', partition: 0 }], {
+      autoCommit: false,
+    });
+  }
+
+  getKafkaMessages(): Observable<any> {
+    return new Observable((observer: Observer<any>) => {
+      this.kafkaConsumer.on('message', (message: any) => {
+        observer.next(message.value);
+      });
+
+      this.kafkaConsumer.on('error', (error: any) => {
+        observer.error(error);
+      });
+    });
+  }
+
+  disconnect() {
+    this.kafkaConsumer.close(true, () => {
+      console.log('Kafka Consumer closed');
+    });
+  }
 }
