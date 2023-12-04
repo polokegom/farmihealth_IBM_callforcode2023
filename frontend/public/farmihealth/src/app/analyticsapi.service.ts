@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Observable, Observer, Subject } from 'rxjs';
-import { KafkaClient, Consumer } from 'kafka-node';
+import { Observable, Subject, interval } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
 
 
 
@@ -8,32 +9,43 @@ import { KafkaClient, Consumer } from 'kafka-node';
   providedIn: 'root'
 })
 export class AnalyticsapiService {
+  private apiUrl = 'http://localhost:9004/api/farmhealth';
+  private streamUrl = 'http://localhost:9004/stream/farmhealth';
 
-  private kafkaClient: any;
-  private kafkaConsumer: any;
+ 
+  private eventSource!: EventSource;
 
-  constructor() {
-    this.kafkaClient = new KafkaClient({ kafkaHost: 'localhost:9092' }); // Adjust with your Kafka broker details
-    this.kafkaConsumer = new Consumer(this.kafkaClient, [{ topic: 'polokegos-event', partition: 0 }], {
-      autoCommit: false,
-    });
+  constructor(private http: HttpClient) { }
+
+  start():Observable<any> {/*
+    this.eventSource = new EventSource(this.streamUrl);
+    return new Observable<MessageEvent>((observer) => {
+      this.eventSource.onmessage = (event: MessageEvent) => {
+        observer.next(event);
+      };
+    });*/
+
+     return this.http.get(this.streamUrl);
   }
 
-  getKafkaMessages(): Observable<any> {
-    return new Observable((observer: Observer<any>) => {
-      this.kafkaConsumer.on('message', (message: any) => {
-        observer.next(message.value);
-      });
+  close() {
+    /*if (this.eventSource) {
+      this.eventSource.close();
+    }*/
+  }
+  /* private messagesSubject = new Subject<string[]>();
+  constructor(private http: HttpClient) {}
 
-      this.kafkaConsumer.on('error', (error: any) => {
-        observer.error(error);
-      });
-    });
+
+  getMessages(): Observable<string[]> {
+    return this.http.get<string[]>(apiUrl);
   }
 
-  disconnect() {
-    this.kafkaConsumer.close(true, () => {
-      console.log('Kafka Consumer closed');
-    });
+  getMessagesObservable(): Observable<string[]> {
+    return this.messagesSubject.asObservable();
   }
+
+  private updateMessages(messages: string[]): void {
+    this.messagesSubject.next(messages);
+  }*/
 }
