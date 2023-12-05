@@ -3,6 +3,8 @@ This is a project build for "IBM - Call For Code" 2023 to
 scan and access the health of a crop field using an autonomous drone to mitigate declining crop yields due to pests, disease and weeds Thus building a more sustainable agricultural sector.
 
 
+# Youtube Video:
+[![Alt text](doc/imgs/farmihealth_poster3.png)](https://www.youtube.com/watch?v=1RL2KJs96NM)
 
 # Roadmap Of Solution:
 ![Alt Text](doc/imgs/farmihealth_roadmap.png)
@@ -24,8 +26,6 @@ scan and access the health of a crop field using an autonomous drone to mitigate
 
 
 
-# Youtube Video:
-[![Alt text](doc/imgs/farmihealth_poster3.png)](https://www.youtube.com/watch?v=1RL2KJs96NM)
 
 # References:
 
